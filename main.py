@@ -25,7 +25,7 @@ pfp_atts = json.load(data)
 
 # list of the various outfits you want to offer. these should match the filename on the outfit pngs
 
-outfits = ["suit", "blue"]
+outfits = ["cape", "blue", "daovote", "ghost", "horns", "pumpkin", "suit-blk", "suit-pink", "vote"]
 
 # Search for the pfp id in the JSON dictionary and return the image URL associated with that id. You'll need to update the keys to match what's in your JSON delattr
 
@@ -53,7 +53,7 @@ def get_dressed(fit, pfp_id):
     url = (get_pfp_img_url(pfp_id))
     download_image(url, pfp_folder + str(pfp_id) + '.png')
 
-# This combines the images 
+# This combines the images
 
     pfp = Image.open(pfp_folder + str(pfp_id) + '.png')
     outfit = Image.open(outfits_folder + fit + '.png')
@@ -76,12 +76,12 @@ async def newfit(ctx, fit: str, pfp_id: int):
         if 0 <= pfp_id <= 5000:
             get_dressed(fit, str(pfp_id))
             await ctx.channel.send(file=discord.File(save_img_folder + 'dressed' + str(pfp_id) +'.png'))
-      else: 
+      else:
         await ctx.send('Please enter a valid fit. Check !fits for options')
     except:
         await ctx.send('Please enter a valid number between 1 and 5000.')
 
-# Lists the different "fits" available. This just returns the outfits list on new lines 
+# Lists the different "fits" available. This just returns the outfits list on new lines
 
 @bot.command(brief='List avaiable fits', description='This command will list the different outfits available to you')
 async def fits(ctx):
