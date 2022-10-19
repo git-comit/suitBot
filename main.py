@@ -56,7 +56,6 @@ def download_image(url, image_file_path):
 
 def get_dressed(fit, pfp_id):
     url = (get_pfp_img_url(pfp_id))
-    print(url)
     download_image(url, pfp_folder + str(pfp_id) + '.png')
 
 # This combines the images
@@ -70,9 +69,9 @@ def get_dressed(fit, pfp_id):
     return
 
 
-def deleteDressed(pfp_id):
-    os.remove(save_img_folder + 'dressed' + str(pfp_id) + '.png')
-    os.remove(pfp_folder + str(pfp_id) + '.png')
+# def deleteDressed(pfp_id):
+#     os.remove(save_img_folder + 'dressed' + str(pfp_id) + '.png')
+#     os.remove(pfp_folder + str(pfp_id) + '.png')
 
 
 @bot.event
@@ -88,8 +87,6 @@ async def newfit(ctx, fit: str, pfp_id: int):
         print(pfp_id)
         if fit.lower() in outfits:
             if 0 <= pfp_id <= 5000:
-                await ctx.send("hello")
-
                 get_dressed(fit, str(pfp_id))
                 await ctx.send(file=discord.File(save_img_folder + 'dressed' + str(pfp_id) + '.png'))
                 # deleteDressed(str(pfp_id))
