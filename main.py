@@ -38,7 +38,6 @@ outfits = ["cape", "blue", "daovote", "ghost", "horns",
 def get_pfp_img_url(id):
     for pfp in pfp_atts:
         if id == pfp['number']:
-            print(pfp['Image'])
             return pfp['Image']
 
 
@@ -66,7 +65,7 @@ def get_dressed(fit, pfp_id):
 
     pfp.paste(outfit, (0, 0), mask=outfit)
     pfp.save(save_img_folder + 'dressed' + str(pfp_id) + '.png')
-    print("testing")
+    print(pfp)
     return
 
 
