@@ -90,7 +90,7 @@ async def newfit(ctx, fit: str, pfp_id: int):
             if 0 <= pfp_id <= 5000:
                 get_dressed(fit, str(pfp_id))
                 await ctx.channel.send(file=discord.File(save_img_folder + 'dressed' + str(pfp_id) + '.png'))
-                deleteDressed(fit, str(pfp_id))
+                # deleteDressed(fit, str(pfp_id))
         else:
             await ctx.send('Please enter a valid fit. Check !fits for options')
     except:
