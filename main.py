@@ -88,7 +88,7 @@ async def newfit(ctx, fit: str, pfp_id: int):
         if fit.lower() in outfits:
             if 0 <= pfp_id <= 5000:
                 await get_dressed(fit, str(pfp_id))
-                await ctx.channel.send(file=discord.File(save_img_folder + 'dressed' + str(pfp_id) + '.png'))
+                ctx.channel.send(file=discord.File(save_img_folder + 'dressed' + str(pfp_id) + '.png'))
                 print('test')
 
                 # deleteDressed(str(pfp_id))
