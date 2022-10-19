@@ -65,7 +65,7 @@ def get_dressed(fit, pfp_id):
 
     pfp.paste(outfit, (0, 0), mask=outfit)
     pfp.save(save_img_folder + 'dressed' + str(pfp_id) + '.png')
-    print(pfp)
+
     return
 
 
