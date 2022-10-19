@@ -83,7 +83,7 @@ async def on_ready():
 
 
 @bot.command(name="newfit", brief='Dress your pfp', description='This command will let you apply new fits to your pfp')
-async def newfit(ctx, fit: str, pfp_id: int):
+async def newfit(ctx, fit: str, pfp_id: str):
     try:
         if fit.lower() in outfits:
             if 0 <= pfp_id <= 5000:
