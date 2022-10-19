@@ -93,8 +93,8 @@ async def newfit(ctx, fit: str, pfp_id: int):
                 # deleteDressed(str(pfp_id))
         else:
             await ctx.send('Please enter a valid fit. Check !fits for options')
-    except:
-        await ctx.send('Please enter a valid number between 1 and 5000.')
+    # except:
+        # await ctx.send('Please enter a valid number between 1 and 5000.')
 
 # Lists the different "fits" available. This just returns the outfits list on new lines
 
