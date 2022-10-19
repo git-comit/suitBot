@@ -77,7 +77,6 @@ def deleteDressed(fit, pfp_id):
 @bot.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot))
-    print(pfp_atts)
 
 # !newfit command executes the get_dressed function and returns the resulting image. It accepts a value between 1 and 5000. Update this to use the command name you want and the values to fit the range of your project
 
