@@ -56,6 +56,7 @@ def download_image(url, image_file_path):
 
 def get_dressed(fit, pfp_id):
     url = (get_pfp_img_url(pfp_id))
+    print(url)
     download_image(url, pfp_folder + str(pfp_id) + '.png')
 
 # This combines the images
@@ -87,10 +88,8 @@ async def newfit(ctx, fit: str, pfp_id: int):
         print(pfp_id)
         if fit.lower() in outfits:
             if 0 <= pfp_id <= 5000:
-                await get_dressed(fit, str(pfp_id))
-                ctx.channel.send(file=discord.File(save_img_folder + 'dressed' + str(pfp_id) + '.png'))
-                print('test')
-
+                get_dressed(fit, str(pfp_id))
+                await ctx.channel.send(file=discord.File(save_img_folder + 'dressed' + str(pfp_id) + '.png'))
                 # deleteDressed(str(pfp_id))
         else:
             await ctx.send('Please enter a valid fit. Check !fits for options')
