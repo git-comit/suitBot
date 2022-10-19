@@ -38,6 +38,7 @@ outfits = ["cape", "blue", "daovote", "ghost", "horns",
 def get_pfp_img_url(id):
     for pfp in pfp_atts:
         if id == pfp['number']:
+            print(pfp['Image'])
             return pfp['Image']
 
 
@@ -87,7 +88,6 @@ async def newfit(ctx, fit: str, pfp_id: int):
         print(pfp_id)
         if fit.lower() in outfits:
             if 0 <= pfp_id <= 5000:
-                print('hello')
                 get_dressed(fit, str(pfp_id))
                 await ctx.channel.send(file=discord.File(save_img_folder + fit + str(pfp_id) + '.png'))
                 # deleteDressed(str(pfp_id))
