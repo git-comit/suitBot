@@ -8,7 +8,7 @@ import PIL
 from PIL import Image
 from dotenv import load_dotenv
 
-port = int(os. environ.get('PORT', 33507))
+port = int(os.environ.get('PORT', 33507))
 # discord bot
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix="!", intents=intents)
