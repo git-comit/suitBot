@@ -69,7 +69,7 @@ def get_dressed(fit, pfp_id):
     return
 
 
-def deleteDressed(fit, pfp_id):
+def deleteDressed(pfp_id):
     os.remove(save_img_folder + 'dressed' + str(pfp_id) + '.png')
     os.remove(pfp_folder + str(pfp_id) + '.png')
 
@@ -87,9 +87,10 @@ async def newfit(ctx, fit: str, pfp_id: int):
         print(pfp_id)
         if fit.lower() in outfits:
             if 0 <= pfp_id <= 5000:
+                print('hello')
                 get_dressed(fit, str(pfp_id))
-                await ctx.channel.send(file=discord.File(save_img_folder + 'dressed' + str(pfp_id) + '.png'))
-                deleteDressed(fit, str(pfp_id))
+                await ctx.channel.send(file=discord.File(save_img_folder + fit + str(pfp_id) + '.png'))
+                # deleteDressed(str(pfp_id))
         else:
             await ctx.send('Please enter a valid fit. Check !fits for options')
     except:
