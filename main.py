@@ -10,7 +10,8 @@ from dotenv import load_dotenv
 
 # port = int(os.environ.get('PORT', 33507))
 # discord bot
-bot = commands.Bot(command_prefix="!")
+intents = discord.Intents.all()
+bot = commands.Bot(command_prefix="!", intents=intents)
 
 # Opening JSON file with pfps. Add your open file and update it to match the name here
 data = open('attributes.json')
