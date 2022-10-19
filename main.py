@@ -84,7 +84,7 @@ async def on_ready():
 
 @bot.command(name="newfit", brief='Dress your pfp', description='This command will let you apply new fits to your pfp')
 async def newfit(ctx, fit: str, pfp_id: int):
-    try:
+
         print(pfp_id)
         if fit.lower() in outfits:
             if 0 <= pfp_id <= 5000:
@@ -93,7 +93,7 @@ async def newfit(ctx, fit: str, pfp_id: int):
                 # deleteDressed(str(pfp_id))
         else:
             await ctx.send('Please enter a valid fit. Check !fits for options')
-    # except:
+
         # await ctx.send('Please enter a valid number between 1 and 5000.')
 
 # Lists the different "fits" available. This just returns the outfits list on new lines
