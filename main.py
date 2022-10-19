@@ -34,11 +34,14 @@ outfits = ["cape", "blue", "daovote", "ghost", "horns",
 # Search for the pfp id in the JSON dictionary and return the image URL associated with that id. You'll need to update the keys to match what's in your JSON delattr
 
 # Need to add error handling
-
+def print_data():
+    while i <= 20:
+        print(pfp_atts)
+        i+=1
 
 def get_pfp_img_url(id):
     for pfp in pfp_atts:
-        if id == pfp['#']:
+        if id == pfp['number']:
             return pfp['Image']
 
 
@@ -80,7 +83,9 @@ async def on_ready():
     print('We have logged in as {0.user}'.format(bot))
 
 # !newfit command executes the get_dressed function and returns the resulting image. It accepts a value between 1 and 5000. Update this to use the command name you want and the values to fit the range of your project
-
+@bot.command(name='showdata')
+async def show_data():
+    print_data()
 
 @bot.command(name="newfit", brief='Dress your pfp', description='This command will let you apply new fits to your pfp')
 async def newfit(ctx, fit: str, pfp_id: int):
