@@ -21,7 +21,7 @@ data = open('attributes.json')
 save_img_folder = 'dressed_pfps/'
 pfp_folder = 'clean_pfps/'
 outfits_folder = 'outfits/'
-
+no_background_folder = 'no_background/'
 # Returns JSON object as a dictionary
 pfp_atts = json.load(data)
 
@@ -103,6 +103,16 @@ async def fits(ctx):
 
 # Lets user know when they enter an invalid command
 
+@bot.command(name="no background", brief="this will return the chosen monke with no background")
+async def no_background(ctx, pfp_id: int):
+    try:
+        if 0 < pfp_id <=5000:
+            await ctx.send(file=discord.File(no_background_folder + str(pfp_id) + '.png'))
+
+        else: await ctx.send('Please enter a number between 1 and 5000')
+
+    except:
+        await ctx.send("unknow error")
 
 @bot.event
 async def on_command_error(ctx, error):
