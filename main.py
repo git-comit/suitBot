@@ -73,7 +73,7 @@ def deleteDressed(pfp_id):
     os.remove(save_img_folder + 'dressed' + str(pfp_id) + '.png')
     os.remove(pfp_folder + str(pfp_id) + '.png')
 
-def get_kit(fit, pfp_id)
+def get_kit(fit, pfp_id):
     url = (get_pfp_img_url(pfp_id))
     download_image(url, pfp_folder + str(pfp_id) + '.png')
 
@@ -115,7 +115,7 @@ async def fits(ctx):
     await ctx.send('**List of Fits (please choose from one of the below)**\n\n' + "\n".join(outfits))
 
 @bot.command(brief='List avaiable World Cup kits', description='This command will list the different World Cup kits available to you')
-async def wcfits(ctx):
+async def wc_fits(ctx):
     await ctx.send('**List of Fits (please choose from one of the below)**\n\n' + "\n".join(outfits))
 
 # Lets user know when they enter an invalid command
