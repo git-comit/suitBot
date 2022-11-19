@@ -31,6 +31,7 @@ pfp_atts = json.load(data)
 
 outfits = ["cape", "blue", "daovote", "ghost","halo", "horns","portugal", "portugalsolana","pumpkin", "sombrero", "suit-blk", "suit-pink", "vote", "vr"]
 
+wc_kits = ["argentina", "belgium", "brazil", "canada", "croatia", "england", "france", "germany", "netherlands", "portugal", "spain", "usa"]
 # Search for the pfp id in the JSON dictionary and return the image URL associated with that id. You'll need to update the keys to match what's in your JSON delattr
 
 # Need to add error handling
@@ -115,7 +116,7 @@ async def fits(ctx):
     await ctx.send('**List of Fits (please choose from one of the below)**\n\n' + "\n".join(outfits))
 
 @bot.command(brief='List avaiable World Cup kits', description='This command will list the different World Cup kits available to you')
-async def wc_fits(ctx):
+async def kits(ctx):
     await ctx.send('**List of Fits (please choose from one of the below)**\n\n' + "\n".join(outfits))
 
 # Lets user know when they enter an invalid command
@@ -131,10 +132,10 @@ async def nobackground(ctx, pfp_id: int):
     except:
         await ctx.send("unknow error")
 
-@bot.command(name="wc", brief='World Cup Kits', description='This command will let you apply select wc kits to your monke, type `?wc_fits` to see available countries')
+@bot.command(name="wc", brief='World Cup Kits', description='This command will let you apply select wc kits to your monke, type `?kits` to see available countries')
 async def wc(ctx, fit: str, pfp_id: int):
     try:
-        if fit.lower() in outfits:
+        if fit.lower() in wc_kits:
             if 0 <= pfp_id <= 5000:
                 get_kit(fit, str(pfp_id))
                 await ctx.send(file=discord.File(save_img_folder + 'dressed' + str(pfp_id) + '.png'))
