@@ -22,6 +22,7 @@ save_img_folder = 'dressed_pfps/'
 pfp_folder = 'clean_pfps/'
 outfits_folder = 'outfits/'
 no_background_folder = 'no_background/'
+wc_folder= 'wc_kits/'
 # Returns JSON object as a dictionary
 pfp_atts = json.load(data)
 
@@ -72,6 +73,19 @@ def deleteDressed(pfp_id):
     os.remove(save_img_folder + 'dressed' + str(pfp_id) + '.png')
     os.remove(pfp_folder + str(pfp_id) + '.png')
 
+def get_kit(fit, pfp_id)
+    url = (get_pfp_img_url(pfp_id))
+    download_image(url, pfp_folder + str(pfp_id) + '.png')
+
+# This combines the images
+
+    pfp = Image.open(pfp_folder + str(pfp_id) + '.png')
+    outfit = Image.open(wc_folder + fit + '.png')
+
+    pfp.paste(outfit, (0, 0), mask=outfit)
+    pfp.save(save_img_folder + 'dressed' + str(pfp_id) + '.png')
+
+    return
 
 @bot.event
 async def on_ready():
@@ -100,6 +114,10 @@ async def newfit(ctx, fit: str, pfp_id: int):
 async def fits(ctx):
     await ctx.send('**List of Fits (please choose from one of the below)**\n\n' + "\n".join(outfits))
 
+@bot.command(brief='List avaiable World Cup kits', description='This command will list the different World Cup kits available to you')
+async def wc_fits(ctx):
+    await ctx.send('**List of Fits (please choose from one of the below)**\n\n' + "\n".join(outfits))
+
 # Lets user know when they enter an invalid command
 
 @bot.command(name="nobackground", brief="this will return the chosen monke with no background")
@@ -112,6 +130,20 @@ async def nobackground(ctx, pfp_id: int):
 
     except:
         await ctx.send("unknow error")
+
+@bot.command(name="wc", brief='World Cup Kits', description='This command will let you apply select wc kits to your monke, type `?wc_fits` to see available countries')
+async def wc(ctx, fit: str, pfp_id: int):
+    try:
+        if fit.lower() in outfits:
+            if 0 <= pfp_id <= 5000:
+                get_kit(fit, str(pfp_id))
+                await ctx.send(file=discord.File(save_img_folder + 'dressed' + str(pfp_id) + '.png'))
+                deleteDressed(str(pfp_id))
+        else:
+            await ctx.send('Please enter a valid fit. Check !fits for options')
+    except:
+        await ctx.send('Please enter a valid number between 1 and 5000.')
+
 
 @bot.event
 async def on_command_error(ctx, error):
