@@ -115,7 +115,7 @@ async def fits(ctx):
     await ctx.send('**List of Fits (please choose from one of the below)**\n\n' + "\n".join(outfits))
 
 @bot.command(brief='List avaiable World Cup kits', description='This command will list the different World Cup kits available to you')
-async def wc_fits(ctx):
+async def wcfits(ctx):
     await ctx.send('**List of Fits (please choose from one of the below)**\n\n' + "\n".join(outfits))
 
 # Lets user know when they enter an invalid command
