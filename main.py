@@ -104,7 +104,7 @@ async def newfit(ctx, fit: str, pfp_id: int):
                 await ctx.send(file=discord.File(save_img_folder + 'dressed' + str(pfp_id) + '.png'))
                 deleteDressed(str(pfp_id))
         else:
-            await ctx.send('Please enter a valid fit. Check !fits for options')
+            await ctx.send('Please enter a valid fit. Check ?fits for options')
     except:
         await ctx.send('Please enter a valid number between 1 and 5000.')
 
@@ -141,7 +141,7 @@ async def wc(ctx, fit: str, pfp_id: int):
                 await ctx.send(file=discord.File(save_img_folder + 'dressed' + str(pfp_id) + '.png'))
                 deleteDressed(str(pfp_id))
         else:
-            await ctx.send('Please enter a valid fit. Check !fits for options')
+            await ctx.send('Please enter a valid kit. Check ?kits for options')
     except:
         await ctx.send('Please enter a valid number between 1 and 5000.')
 
@@ -150,7 +150,7 @@ async def wc(ctx, fit: str, pfp_id: int):
 async def on_command_error(ctx, error):
     # or discord.ext.commands.errors.CommandNotFound as you wrote
     if isinstance(error, commands.CommandNotFound):
-        await ctx.send("Unknown command, please check !help for a list of available commands")
+        await ctx.send("Unknown command, please check ?help for a list of available commands")
 
 load_dotenv()
 
