@@ -160,30 +160,28 @@ async def wc(ctx, fit: str, pfp_id: int):
         await ctx.send('Please enter a valid number between 1 and 5000.')
 
 @bot.command(name="wcnb", brief='World Cup Kits no background', description='This command will let you apply select wc kits to your monke, and return them without a background. type `?kits` to see available countries')
-async def wc_nb(ctx, fit: str, pfp_id: int):
-    try:
+def wc_nb(ctx, fit: str, pfp_id: int):
         if fit.lower() in wc_kits:
             if 0 <= pfp_id <= 5000:
                 no_background_wc(fit, str(pfp_id))
-                await ctx.send(file=discord.File(save_img_folder + 'dressed' + str(pfp_id) + '.png'))
+                ctx.send(file=discord.File(save_img_folder + 'dressed' + str(pfp_id) + '.png'))
                 deleteDressed(str(pfp_id))
-        else:
-            await ctx.send('Please enter a valid kit. Check ?kits for options')
-    except:
-        await ctx.send('Please enter a valid number between 1 and 5000.')
 
-@bot.command(name="newfitnb", brief='new fits no background', description='This command will let you apply select wc kits to your monke, and return them without a background. type `?kits` to see available countries')
-async def fit_nb(ctx, fit: str, pfp_id: int):
-    try:
-        if fit.lower() in outfits:
-            if 0 <= pfp_id <= 5000:
-                no_background_fit(fit, str(pfp_id))
-                await ctx.send(file=discord.File(save_img_folder + 'dressed' + str(pfp_id) + '.png'))
-                deleteDressed(str(pfp_id))
+            else:
+                ctx.send('Please enter a valid number between 1 and 5000.')
         else:
-            await ctx.send('Please enter a valid kit. Check ?kits for options')
-    except:
-        await ctx.send('Please enter a valid number between 1 and 5000.')
+            ctx.send('Please enter a valid kit. Check ?kits for options')
+@bot.command(name="newfitnb", brief='new fits no background', description='This command will let you apply select wc kits to your monke, and return them without a background. type `?kits` to see available countries')
+def fit_nb(ctx, fit: str, pfp_id: int):
+    if fit.lower() in outfits:
+        if 0 <= pfp_id <= 5000:
+            no_background_fit(fit, str(pfp_id))
+            ctx.send(file=discord.File(save_img_folder + 'dressed' + str(pfp_id) + '.png'))
+            deleteDressed(str(pfp_id))
+        else:
+            ctx.send('Please enter a valid number between 1 and 5000.')
+    else:
+        ctx.send('Please enter a valid kit. Check ?kits for options')
 
 @bot.event
 async def on_command_error(ctx, error):
