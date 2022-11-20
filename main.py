@@ -81,7 +81,7 @@ def get_kit(fit, pfp_id):
 # This combines the images
 
     pfp = Image.open(pfp_folder + str(pfp_id) + '.png')
-    outfit = Image.open(wc_folder + fit + '.png')
+    outfit = Image.open(wc_folder + fit.lower() + '.png')
 
     pfp.paste(outfit, (0, 0), mask=outfit)
     pfp.save(save_img_folder + 'dressed' + str(pfp_id) + '.png')
