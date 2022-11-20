@@ -159,7 +159,7 @@ async def wc(ctx, fit: str, pfp_id: int):
     except:
         await ctx.send('Please enter a valid number between 1 and 5000.')
 
-@bot.command(name="worldcupnb", brief='World Cup Kits no background', description='This command will let you apply select wc kits to your monke, and return them without a background. type `?kits` to see available countries')
+@bot.command(name="wcnb", brief='World Cup Kits no background', description='This command will let you apply select wc kits to your monke, and return them without a background. type `?kits` to see available countries')
 async def wc_nb(ctx, fit: str, pfp_id: int):
     try:
         if fit.lower() in wc_kits:
