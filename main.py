@@ -23,6 +23,7 @@ pfp_folder = 'clean_pfps/'
 outfits_folder = 'outfits/'
 no_background_folder = 'no_background/'
 wc_folder= 'wc_kits/'
+flag_folder='flags/'
 # Returns JSON object as a dictionary
 pfp_atts = json.load(data)
 
@@ -32,6 +33,9 @@ pfp_atts = json.load(data)
 outfits = ["cape", "blue", "daovote", "ghost","halo", "horns","portugal", "portugalsolana","pumpkin", "sombrero", "suit-blk", "suit-pink", "vote", "vr"]
 
 wc_kits = ["argentina", "australia", "belgium", "brazil", "canada", "costarica", "croatia", "england", "france", "germany", "italy", "mexico", "mexico+", "netherlands", "portugal", "serbia", "southkorea", "spain", "usa"]
+
+flags = ["usa"]
+# flags = ["argentina", "australia", "belgium", "brazil", "canada", "costarica", "croatia", "england", "france", "germany", "italy", "mexico", "netherlands", "portugal", "serbia", "southkorea", "spain", "usa"]
 # Search for the pfp id in the JSON dictionary and return the image URL associated with that id. You'll need to update the keys to match what's in your JSON delattr
 
 # Need to add error handling
@@ -101,6 +105,16 @@ def no_background_fit(fit, pfp_id):
 
     pfp.paste(outfit, (0, 0), mask=outfit)
     pfp.save(save_img_folder + 'dressed' + str(pfp_id) + '.png')
+
+def flag_fit_build(fit, pfp_id):
+    bg = Image.open(flag_folder + fit.lower() + '.png')
+    pfp = Image.open(no_background_folder + str(pfp_id) + '.png')
+    kit = Image.open(wc_folder + fit.lower() + '.png')
+
+    bg.paste(pfp, (0,0), mask=pfp)
+    bg.paste(kit, (0,0), mask=kit)
+    bg.save(save_img_folder + 'dressed' + str(pfp_id) + '.png')
+
 
 @bot.event
 async def on_ready():
@@ -178,6 +192,20 @@ async def fit_nb(ctx, fit: str, pfp_id: int):
         if fit.lower() in outfits:
             if 0 <= pfp_id <= 5000:
                 no_background_fit(fit, str(pfp_id))
+                await ctx.send(file=discord.File(save_img_folder + 'dressed' + str(pfp_id) + '.png'))
+                deleteDressed(str(pfp_id))
+        else:
+            await ctx.send('Please enter a valid kit. Check ?kits for options')
+    except:
+        await ctx.send('Please enter a valid number between 1 and 5000.')
+
+
+@bot.command(name="wcflag", brief='new worldcup kit with flag', description='This command will let you apply select wc kits to your monke, and return them with a flag background. type `?kits` to see available countries')
+async def fit_flag(ctx, fit: str, pfp_id: int):
+    try:
+        if fit.lower() in outfits:
+            if 0 <= pfp_id <= 5000:
+                flag_fit_build(fit, str(pfp_id))
                 await ctx.send(file=discord.File(save_img_folder + 'dressed' + str(pfp_id) + '.png'))
                 deleteDressed(str(pfp_id))
         else:
