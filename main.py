@@ -23,16 +23,19 @@ pfp_folder = 'clean_pfps/'
 outfits_folder = 'outfits/'
 no_background_folder = 'no_background/'
 wc_folder= 'wc_kits/'
+sombrero_folder = 'sombreros/'
 # Returns JSON object as a dictionary
 pfp_atts = json.load(data)
 
 
 # list of the various outfits you want to offer. these should match the filename on the outfit pngs
 
-outfits = ["cape", "blue", "daovote", "ghost","halo", "horns","portugal", "portugalsolana","pumpkin", "sombrero", "suit-blk", "suit-pink", "vote", "vr"]
+outfits = ["cape", "blue", "daovote", "ghost","halo", "horns","portugal", "portugalsolana","pumpkin", "sombrero", "suit-blk", "suit-pink", "vote","votebrero", "vr"]
 
 wc_kits = ["argentina", "australia", "belgium", "brazil", "canada", "costarica", "croatia", "england", "france", "germany", "italy", "mexico", "mexico+", "netherlands", "portugal", "serbia", "southkorea", "spain", "usa"]
 # Search for the pfp id in the JSON dictionary and return the image URL associated with that id. You'll need to update the keys to match what's in your JSON delattr
+
+sombreros = ["black", "cinco", "easter", "october", "pink"]
 
 # Need to add error handling
 
@@ -88,6 +91,18 @@ def get_kit(fit, pfp_id):
 
     return
 
+def get_brero(fit, pfp_id):
+    url = (get_pfp_img_url(pfp_id))
+    download_image(url, pfp_folder + str(pfp_id) + '.png')
+
+    pfp = Image.open(pfp_folder + str(pfp_id) + '.png')
+    brero = Image.open(sombrero_folder + fit.lower + '.png')
+
+    pfp.paste(brero, (0,0), mask=brero)
+    pfp.save(save_img_folder + 'dressed' + str(pfp_id) + '.png')
+
+    return
+
 def no_background_wc(fit, pfp_id):
     pfp = Image.open(no_background_folder + str(pfp_id) + '.png')
     outfit = Image.open(wc_folder + fit.lower() + '.png')
@@ -122,6 +137,20 @@ async def newfit(ctx, fit: str, pfp_id: int):
     except:
         await ctx.send('Please enter a valid number between 1 and 5000.')
 
+
+@bot.command(name="brero", brief='Dress your pfp', description='This command will let you apply new sombrero to your pfp')
+async def newfit(ctx, fit: str, pfp_id: int):
+    try:
+        if fit.lower() in sombreros:
+            if 0 <= pfp_id <= 5000:
+                get_brero(fit, str(pfp_id))
+                await ctx.send(file=discord.File(save_img_folder + 'dressed' + str(pfp_id) + '.png'))
+                deleteDressed(str(pfp_id))
+        else:
+            await ctx.send('Please enter a valid fit. Check ?sombrero for options')
+    except:
+        await ctx.send('Please enter a valid number between 1 and 5000.')
+
 # Lists the different "fits" available. This just returns the outfits list on new lines
 
 
@@ -132,6 +161,11 @@ async def fits(ctx):
 @bot.command(brief='List avaiable World Cup kits', description='This command will list the different World Cup kits available to you')
 async def kits(ctx):
     await ctx.send('**List of Fits (please choose from one of the below)**\n\n' + "\n".join(wc_kits))
+
+@bot.command(brief='List avaiable fits', description='This command will list the different outfits available to you')
+async def sombrero(ctx):
+    await ctx.send('**List of Fits (please choose from one of the below)**\n\n' + "\n".join(sombreros))
+
 
 # Lets user know when they enter an invalid command
 
