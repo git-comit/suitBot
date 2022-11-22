@@ -139,7 +139,7 @@ async def newfit(ctx, fit: str, pfp_id: int):
 
 
 @bot.command(name="brero", brief='Dress your pfp', description='This command will let you apply new sombrero to your pfp')
-async def newfit(ctx, fit: str, pfp_id: int):
+async def brero(ctx, fit: str, pfp_id: int):
     try:
         if fit.lower() in sombreros:
             if 0 <= pfp_id <= 5000:
@@ -162,7 +162,7 @@ async def fits(ctx):
 async def kits(ctx):
     await ctx.send('**List of Fits (please choose from one of the below)**\n\n' + "\n".join(wc_kits))
 
-@bot.command(brief='List avaiable fits', description='This command will list the different outfits available to you')
+@bot.command(brief='List avaiable sombreros', description='This command will list the different outfits available to you')
 async def sombrero(ctx):
     await ctx.send('**List of Fits (please choose from one of the below)**\n\n' + "\n".join(sombreros))
 
