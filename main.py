@@ -68,13 +68,13 @@ def get_dressed(fit, pfp_id):
     outfit = Image.open(outfits_folder + fit.lower() + '.png')
 
     pfp.paste(outfit, (0, 0), mask=outfit)
-    pfp.save(save_img_folder + 'dressed' + str(pfp_id) + '.png')
+    pfp.save(save_img_folder + fit.lower() + str(pfp_id) + '.png')
 
     return
 
 
-def deleteDressed(pfp_id):
-    os.remove(save_img_folder + 'dressed' + str(pfp_id) + '.png')
+def deleteDressed(fit, pfp_id):
+    os.remove(save_img_folder + fit.lower() + str(pfp_id) + '.png')
     os.remove(pfp_folder + str(pfp_id) + '.png')
 
 def get_kit(fit, pfp_id):
@@ -87,7 +87,7 @@ def get_kit(fit, pfp_id):
     outfit = Image.open(wc_folder + fit.lower() + '.png')
 
     pfp.paste(outfit, (0, 0), mask=outfit)
-    pfp.save(save_img_folder + 'dressed' + str(pfp_id) + '.png')
+    pfp.save(save_img_folder + fit.lower() + str(pfp_id) + '.png')
 
     return
 
@@ -99,7 +99,7 @@ def get_brero(fit, pfp_id):
     brero = Image.open(sombrero_folder + fit.lower() + '.png')
 
     pfp.paste(brero, (0,0), mask=brero)
-    pfp.save(save_img_folder + 'dressed' + str(pfp_id) + '.png')
+    pfp.save(save_img_folder + fit.lower() + str(pfp_id) + '.png')
 
     return
 
@@ -108,7 +108,7 @@ def no_background_wc(fit, pfp_id):
     outfit = Image.open(wc_folder + fit.lower() + '.png')
 
     pfp.paste(outfit, (0, 0), mask=outfit)
-    pfp.save(save_img_folder + 'dressed' + str(pfp_id) + '.png')
+    pfp.save(save_img_folder + fit.lower() + str(pfp_id) + '.png')
 
     return
 
@@ -117,7 +117,7 @@ def no_background_fit(fit, pfp_id):
     outfit = Image.open(outfits_folder + fit.lower() + '.png')
 
     pfp.paste(outfit, (0, 0), mask=outfit)
-    pfp.save(save_img_folder + 'dressed' + str(pfp_id) + '.png')
+    pfp.save(save_img_folder + fit.lower() + str(pfp_id) + '.png')
 
     return
 
@@ -126,7 +126,7 @@ def brero_no_background(fit, pfp_id):
     outfit = Image.open(sombrero_folder + str(pfp_id) + '.png')
 
     pfp.paste(outfit, (0, 0), mask=outfit)
-    pfp.save(save_img_folder + 'dressed' + str(pfp_id) + '.png')
+    pfp.save(save_img_folder + fit.lower() + str(pfp_id) + '.png')
 
     return
 
@@ -143,7 +143,7 @@ async def newfit(ctx, fit: str, pfp_id: int):
         if fit.lower() in outfits:
             if 0 <= pfp_id <= 5000:
                 get_dressed(fit, str(pfp_id))
-                await ctx.send(file=discord.File(save_img_folder + 'dressed' + str(pfp_id) + '.png'))
+                await ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
                 deleteDressed(str(pfp_id))
         else:
             await ctx.send('Please enter a valid fit. Check ?fits for options')
@@ -157,7 +157,7 @@ async def newbrero(ctx, fit: str, pfp_id: int):
         if fit.lower() in sombreros:
             if 0 <= pfp_id <= 5000:
                 get_brero(fit, str(pfp_id))
-                await ctx.send(file=discord.File(save_img_folder + 'dressed' + str(pfp_id) + '.png'))
+                await ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
                 deleteDressed(str(pfp_id))
         else:
             await ctx.send('Please enter a valid fit. Check ?sombrero for options')
@@ -199,8 +199,8 @@ async def wc(ctx, fit: str, pfp_id: int):
         if fit.lower() in wc_kits:
             if 0 <= pfp_id <= 5000:
                 get_kit(fit, str(pfp_id))
-                await ctx.send(file=discord.File(save_img_folder + 'dressed' + str(pfp_id) + '.png'))
-                deleteDressed(str(pfp_id))
+                await ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
+                deleteDressed(fit, str(pfp_id))
         else:
             await ctx.send('Please enter a valid kit. Check ?kits for options')
     except:
@@ -212,8 +212,8 @@ async def wc_nb(ctx, fit: str, pfp_id: int):
         if fit.lower() in wc_kits:
             if 0 <= pfp_id <= 5000:
                 no_background_wc(fit, str(pfp_id))
-                await ctx.send(file=discord.File(save_img_folder + 'dressed' + str(pfp_id) + '.png'))
-                deleteDressed(str(pfp_id))
+                await ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
+                deleteDressed(fit, str(pfp_id))
         else:
             await ctx.send('Please enter a valid kit. Check ?kits for options')
     except:
@@ -225,8 +225,8 @@ async def fit_nb(ctx, fit: str, pfp_id: int):
         if fit.lower() in outfits:
             if 0 <= pfp_id <= 5000:
                 no_background_fit(fit, str(pfp_id))
-                await ctx.send(file=discord.File(save_img_folder + 'dressed' + str(pfp_id) + '.png'))
-                deleteDressed(str(pfp_id))
+                await ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
+                deleteDressed(fit, str(pfp_id))
         else:
             await ctx.send('Please enter a valid kit. Check ?kits for options')
     except:
