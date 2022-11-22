@@ -35,7 +35,7 @@ outfits = ["cape", "blue", "daovote", "ghost","halo", "horns","portugal", "portu
 wc_kits = ["argentina", "australia", "belgium", "brazil", "canada", "costarica", "croatia", "england", "france", "germany", "italy", "mexico", "mexico+", "netherlands", "portugal", "serbia", "southkorea", "spain", "usa"]
 # Search for the pfp id in the JSON dictionary and return the image URL associated with that id. You'll need to update the keys to match what's in your JSON delattr
 
-sombreros = ["black", "cinco", "easter", "october", "pink"]
+sombreros = ["black", "blacktie", "cinco", "easter", "october", "pink"]
 
 # Need to add error handling
 
