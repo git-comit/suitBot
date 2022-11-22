@@ -110,12 +110,25 @@ def no_background_wc(fit, pfp_id):
     pfp.paste(outfit, (0, 0), mask=outfit)
     pfp.save(save_img_folder + 'dressed' + str(pfp_id) + '.png')
 
+    return
+
 def no_background_fit(fit, pfp_id):
     pfp = Image.open(no_background_folder + str(pfp_id) + '.png')
     outfit = Image.open(outfits_folder + fit.lower() + '.png')
 
     pfp.paste(outfit, (0, 0), mask=outfit)
     pfp.save(save_img_folder + 'dressed' + str(pfp_id) + '.png')
+
+    return
+
+def brero_no_background(fit, pfp_id):
+    pfp = Image.open(no_background_folder + str(pfp_id) + '.png')
+    outfit = Image.open(sombrero_folder + str(pfp_id) + '.png')
+
+    pfp.paste(outfit, (0, 0), mask=outfit)
+    pfp.save(save_img_folder + 'dressed' + str(pfp_id) + '.png')
+
+    return
 
 @bot.event
 async def on_ready():
