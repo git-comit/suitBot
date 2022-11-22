@@ -96,7 +96,7 @@ def get_brero(fit, pfp_id):
     download_image(url, pfp_folder + str(pfp_id) + '.png')
 
     pfp = Image.open(pfp_folder + str(pfp_id) + '.png')
-    brero = Image.open(sombrero_folder + fit.lower + '.png')
+    brero = Image.open(sombrero_folder + fit.lower() + '.png')
 
     pfp.paste(brero, (0,0), mask=brero)
     pfp.save(save_img_folder + 'dressed' + str(pfp_id) + '.png')
