@@ -189,7 +189,7 @@ async def fit_nb(ctx, fit: str, pfp_id: int):
 async def on_command_error(ctx, error):
     # or discord.ext.commands.errors.CommandNotFound as you wrote
     if isinstance(error, commands.CommandNotFound):
-        await ctx.send("Unknown command, please check ?help for a list of available commands")
+        await ctx.send("Unknown command, please check `?help` for a list of available commands")
 
 load_dotenv()
 
