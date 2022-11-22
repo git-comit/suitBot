@@ -138,8 +138,8 @@ async def newfit(ctx, fit: str, pfp_id: int):
         await ctx.send('Please enter a valid number between 1 and 5000.')
 
 
-@bot.command(name="brero", brief='Dress your pfp', description='This command will let you apply new sombrero to your pfp')
-async def brero(ctx, fit: str, pfp_id: int):
+@bot.command(name="newbrero", brief='new sombrero for your monke', description='This command will let you apply new sombrero to your pfp')
+async def newbrero(ctx, fit: str, pfp_id: int):
     try:
         if fit.lower() in sombreros:
             if 0 <= pfp_id <= 5000:
