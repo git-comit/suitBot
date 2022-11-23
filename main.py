@@ -236,7 +236,7 @@ async def fit_nb(ctx, fit: str, pfp_id: int):
 @bot.command(name="newbreronb", brief='new fits no background', description='This command will let you apply select wc kits to your monke, and return them without a background. type `?kits` to see available countries')
 async def newbrero_nb(ctx, fit: str, pfp_id: int):
     try:
-        if fit.lower() in sombrero_folder:
+        if fit.lower() in sombreros:
             if 0 <= pfp_id <= 5000:
                 brero_no_background(fit, str(pfp_id))
                 await ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
