@@ -232,6 +232,20 @@ async def fit_nb(ctx, fit: str, pfp_id: int):
     except:
         await ctx.send('Please enter a valid number between 1 and 5000.')
 
+
+@bot.command(name="newbreronb", brief='new fits no background', description='This command will let you apply select wc kits to your monke, and return them without a background. type `?kits` to see available countries')
+async def newbrero_nb(ctx, fit: str, pfp_id: int):
+    try:
+        if fit.lower() in sombrero_folder:
+            if 0 <= pfp_id <= 5000:
+                brero_no_background(fit, str(pfp_id))
+                await ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
+                deleteDressed(fit, str(pfp_id))
+        else:
+            await ctx.send('Please enter a valid kit. Check ?kits for options')
+    except:
+        await ctx.send('Please enter a valid number between 1 and 5000.')
+
 @bot.event
 async def on_command_error(ctx, error):
     # or discord.ext.commands.errors.CommandNotFound as you wrote
