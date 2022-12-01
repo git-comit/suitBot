@@ -24,6 +24,7 @@ outfits_folder = 'outfits/'
 no_background_folder = 'no_background/'
 wc_folder= 'wc_kits/'
 sombrero_folder = 'sombreros/'
+wallpaper_folder = 'wallpapers/'
 # Returns JSON object as a dictionary
 pfp_atts = json.load(data)
 
@@ -36,6 +37,8 @@ wc_kits = ["argentina", "australia", "belgium", "brazil", "canada", "costarica",
 # Search for the pfp id in the JSON dictionary and return the image URL associated with that id. You'll need to update the keys to match what's in your JSON delattr
 
 sombreros = ["black", "blacktie", "cinco", "easter", "october", "pink"]
+
+phone_backgrounds = ["black_stack", "blue_stack", "blue", "green_icons", "green_md", "green_stack", "green", "white_blue_md", "white_icons", "yellow"]
 
 # Need to add error handling
 
@@ -72,6 +75,14 @@ def get_dressed(fit, pfp_id):
 
     return
 
+def make_wallpaper(wallpaper, pfp_id):
+    background = Image.open(wallpaper_folder + wallpaper + '.png')
+    monke = Image.open(no_background_folder + pfp_id + '.png')
+
+    background.paste(monke, (0,0), mask=monke)
+    background.save(save_img_folder + wallpaper.lower() + str(pfp_id) + '.png')
+
+    return
 
 def deleteDressed(fit, pfp_id):
     os.remove(save_img_folder + fit.lower() + str(pfp_id) + '.png')
@@ -179,6 +190,9 @@ async def kits(ctx):
 async def sombrero(ctx):
     await ctx.send('**List of Fits (please choose from one of the below)**\n\n' + "\n".join(sombreros))
 
+@bot.command(brief='List avaiable wallpaper backgrounds', description='This command will list the different wallpaper backgrounds available to you')
+async def wallpapers(ctx):
+    await ctx.send('**List of wallpapers (please choose from one of the below)**\n\n' + "\n".join(phone_backgrounds))
 
 # Lets user know when they enter an invalid command
 
@@ -231,6 +245,20 @@ async def fit_nb(ctx, fit: str, pfp_id: int):
             await ctx.send('Please enter a valid kit. Check ?kits for options')
     except:
         await ctx.send('Please enter a valid number between 1 and 5000.')
+
+@bot.command(name="wallpaper", brief='Phone Wallpaper', description='This command will let make a phone wallpapere, type `?wallpapers` to see available backgrounds')
+async def wallpaper(ctx, wallpaper: str, pfp_id: int):
+    try:
+        if wallpaper.lower() in phone_backgrounds:
+            if 0 <= pfp_id <= 5000:
+                make_wallpaper(wallpaper, str(pfp_id))
+                await ctx.send(file=discord.File(save_img_folder + wallpaper.lower() + str(pfp_id) + '.png'))
+                deleteDressed(wallpaper, str(pfp_id))
+        else:
+            await ctx.send('Please enter a valid wallpaper. Check ?wallpapers for options')
+    except:
+        await ctx.send('Please enter a valid number between 1 and 5000.')
+
 
 @bot.event
 async def on_command_error(ctx, error):
