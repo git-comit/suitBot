@@ -141,6 +141,20 @@ def brero_no_background(fit, pfp_id):
 
     return
 
+def high_quality(pfp_id):
+    url = (get_pfp_img_url(pfp_id))
+    download_image(url, pfp_folder + str(pfp_id) + '.png')
+
+    pfp = pfp = Image.open(pfp_folder + str(pfp_id) + '.png')
+    pfp.resize((int(pfp.width*5), int(pfp.height*5)))
+    pfp.save(save_img_folder + 'hq' + str(pfp_id) + '.png')
+
+    return
+
+def delete_hq(pfp_id):
+    os.remove(save_img_folder + 'hq' + str(pfp_id) + '.png')
+    os.remove(pfp_folder + str(pfp_id) + '.png')
+
 @bot.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot))
@@ -256,6 +270,19 @@ async def wallpaper(ctx, wallpaper: str, pfp_id: int):
                 deleteDressed(wallpaper, str(pfp_id))
         else:
             await ctx.send('Please enter a valid wallpaper. Check ?wallpapers for options')
+    except:
+        await ctx.send('Please enter a valid number between 1 and 5000.')
+
+@bot.command(name="hq", brief='High Resolution Monke', description='This command will return an upscaled version of your monke 1920 x 1920')
+async def hq(ctx, pfp_id: int):
+    try:
+
+            if 0 <= pfp_id <= 5000:
+                high_quality(wallpaper, str(pfp_id))
+                await ctx.send(file=discord.File(save_img_folder + 'hq' + str(pfp_id) + '.png'))
+                delete_hq(pfp_id)
+            else:
+                await ctx.send('Please enter a valid number between 1 and 5000')
     except:
         await ctx.send('Please enter a valid number between 1 and 5000.')
 
