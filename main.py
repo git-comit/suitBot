@@ -79,7 +79,7 @@ def make_wallpaper(wallpaper, pfp_id):
     background = Image.open(wallpaper_folder + wallpaper + '.png')
     monke = Image.open(no_background_folder + pfp_id + '.png')
 
-    background.paste(monke, (100, 0) mask=monke)
+    background.paste(monke, (1920, 0), mask=monke)
     background.save(save_img_folder + wallpaper.lower() + str(pfp_id) + '.png')
 
     return
