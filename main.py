@@ -79,7 +79,7 @@ def make_wallpaper(wallpaper, pfp_id):
     background = Image.open(wallpaper_folder + wallpaper + '.png')
     monke = Image.open(no_background_folder + pfp_id + '.png')
 
-    background.paste(monke, (0,0), mask=monke)
+    background.paste(monke)
     background.save(save_img_folder + wallpaper.lower() + str(pfp_id) + '.png')
 
     return
@@ -109,7 +109,7 @@ def get_brero(fit, pfp_id):
     pfp = Image.open(pfp_folder + str(pfp_id) + '.png')
     brero = Image.open(sombrero_folder + fit.lower() + '.png')
 
-    pfp.paste(brero, (100,0), mask=brero)
+    pfp.paste(brero, (0,0), mask=brero)
     pfp.save(save_img_folder + fit.lower() + str(pfp_id) + '.png')
 
     return
