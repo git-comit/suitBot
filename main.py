@@ -146,8 +146,8 @@ def high_quality(pfp_id):
     download_image(url, pfp_folder + str(pfp_id) + '.png')
 
     pfp = pfp = Image.open(pfp_folder + str(pfp_id) + '.png')
-    pfp.resize((int(pfp.width*5), int(pfp.height*5)))
-    pfp.save(save_img_folder + 'hq' + str(pfp_id) + '.png')
+    monke = pfp.resize((int(pfp.width*5), int(pfp.height*5)))
+    monke.save(save_img_folder + 'hq' + str(pfp_id) + '.png')
 
     return
 
