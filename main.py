@@ -78,7 +78,7 @@ def get_dressed(fit, pfp_id):
 def make_wallpaper(wallpaper, pfp_id):
     background = Image.open(wallpaper_folder + wallpaper.lower() + '.png')
     monke = Image.open(no_background_folder + pfp_id + '.png')
-    monke.resize((1920,1920))
+    monke.resize((round(monke.size[0]*5), round(monke.size[1]*5)))
     background.paste(monke, (0, 1920), mask=monke)
     background.save(save_img_folder + wallpaper.lower() + str(pfp_id) + '.png')
 
