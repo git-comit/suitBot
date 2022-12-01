@@ -295,7 +295,7 @@ async def hq(ctx, pfp_id: int):
         await ctx.send('Please enter a valid number between 1 and 5000.')
 
 @bot.command(name="hqnb", brief='High Resolution Monke No Background', description='This command will return an upscaled version of your monke 1920 x 1920')
-async def hq(ctx, pfp_id: int):
+async def hqnb(ctx, pfp_id: int):
     try:
 
             if 0 <= pfp_id <= 5000:
