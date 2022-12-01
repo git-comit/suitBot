@@ -278,7 +278,7 @@ async def hq(ctx, pfp_id: int):
     try:
 
             if 0 <= pfp_id <= 5000:
-                high_quality(wallpaper, str(pfp_id))
+                high_quality(str(pfp_id))
                 await ctx.send(file=discord.File(save_img_folder + 'hq' + str(pfp_id) + '.png'))
                 delete_hq(pfp_id)
             else:
