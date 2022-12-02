@@ -192,10 +192,12 @@ async def newbrero(ctx, fit: str, pfp_id: int):
                 get_brero(fit, str(pfp_id))
                 await ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
                 deleteDressed(str(pfp_id))
+
+            else: await ctx.send('Please enter a valid number between 1 and 5000.')
         else:
             await ctx.send('Please enter a valid fit. Check ?sombrero for options')
     except:
-        await ctx.send('Please enter a valid number between 1 and 5000.')
+        await ctx.send('something went wrong')
 
 # Lists the different "fits" available. This just returns the outfits list on new lines
 
