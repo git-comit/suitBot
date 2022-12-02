@@ -244,7 +244,7 @@ async def wc(ctx, fit: str, pfp_id: int):
 
 @bot.command(name="wcnb", brief='World Cup Kits no background', description='This command will let you apply select wc kits to your monke, and return them without a background. type `?kits` to see available countries')
 async def wc_nb(ctx, fit: str, pfp_id: int):
-    try:
+    # try:
         if fit.lower() in wc_kits:
             if 0 <= pfp_id <= 5000:
                 no_background_wc(fit, str(pfp_id))
@@ -252,12 +252,12 @@ async def wc_nb(ctx, fit: str, pfp_id: int):
                 deleteDressed(fit, str(pfp_id))
         else:
             await ctx.send('Please enter a valid kit. Check ?kits for options')
-    except:
-        await ctx.send('Please enter a valid number between 1 and 5000.')
+    # except:
+    #     await ctx.send('Please enter a valid number between 1 and 5000.')
 
 @bot.command(name="newfitnb", brief='new fits no background', description='This command will let you apply fits, and return them without a background. type `?fits` to see available fits')
 async def fit_nb(ctx, fit: str, pfp_id: int):
-    try:
+    # try:
         if fit.lower() in outfits:
             if 0 <= pfp_id <= 5000:
                 no_background_fit(fit, str(pfp_id))
@@ -265,12 +265,12 @@ async def fit_nb(ctx, fit: str, pfp_id: int):
                 deleteDressed(fit, str(pfp_id))
         else:
             await ctx.send('Please enter a valid kit. Check ?kits for options')
-    except:
-        await ctx.send('Please enter a valid number between 1 and 5000.')
+    # except:
+    #     await ctx.send('Please enter a valid number between 1 and 5000.')
 
 @bot.command(name="wallpaper", brief='Phone Wallpaper', description='This command will let make a phone wallpapere, type `?wallpapers` to see available backgrounds')
 async def wallpaper(ctx, wallpaper: str, pfp_id: int):
-    try:
+    # try:
         if wallpaper.lower() in phone_backgrounds:
             if 0 <= pfp_id <= 5000:
                 make_wallpaper(wallpaper, str(pfp_id))
@@ -278,8 +278,8 @@ async def wallpaper(ctx, wallpaper: str, pfp_id: int):
                 deleteDressed(wallpaper, str(pfp_id))
         else:
             await ctx.send('Please enter a valid wallpaper. Check ?wallpapers for options')
-    except:
-        await ctx.send('Please enter a valid number between 1 and 5000.')
+    # except:
+    #     await ctx.send('Please enter a valid number between 1 and 5000.')
 
 @bot.command(name="hq", brief='High Resolution Monke', description='This command will return an upscaled version of your monke 1920 x 1920')
 async def hq(ctx, pfp_id: int):
