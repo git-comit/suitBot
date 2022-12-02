@@ -174,7 +174,7 @@ async def on_ready():
 async def newfit(ctx, fit: str, pfp_id: int):
     try:
         if fit.lower() in outfits:
-            if 0 <= pfp_id <= 5000:
+            if 0 < pfp_id <= 5000:
                 get_dressed(fit, str(pfp_id))
                 await ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
                 deleteDressed(str(pfp_id))
@@ -188,7 +188,7 @@ async def newfit(ctx, fit: str, pfp_id: int):
 async def newbrero(ctx, fit: str, pfp_id: int):
     try:
         if fit.lower() in sombreros:
-            if 0 <= pfp_id <= 5000:
+            if 0 < pfp_id <= 5000:
                 get_brero(fit, str(pfp_id))
                 await ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
                 deleteDressed(str(pfp_id))
@@ -233,7 +233,7 @@ async def nobackground(ctx, pfp_id: int):
 async def wc(ctx, fit: str, pfp_id: int):
     try:
         if fit.lower() in wc_kits:
-            if 0 <= pfp_id <= 5000:
+            if 0 < pfp_id <= 5000:
                 get_kit(fit, str(pfp_id))
                 await ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
                 deleteDressed(fit, str(pfp_id))
@@ -246,7 +246,7 @@ async def wc(ctx, fit: str, pfp_id: int):
 async def wc_nb(ctx, fit: str, pfp_id: int):
     # try:
         if fit.lower() in wc_kits:
-            if 0 <= pfp_id <= 5000:
+            if 0 < pfp_id <= 5000:
                 no_background_wc(fit, str(pfp_id))
                 await ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
                 deleteDressed(fit, str(pfp_id))
@@ -262,7 +262,7 @@ async def wc_nb(ctx, fit: str, pfp_id: int):
 async def fit_nb(ctx, fit: str, pfp_id: int):
     # try:
         if fit.lower() in outfits:
-            if 0 <= pfp_id <= 5000:
+            if 0 < pfp_id <= 5000:
                 no_background_fit(fit, str(pfp_id))
                 await ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
                 deleteDressed(fit, str(pfp_id))
@@ -278,7 +278,7 @@ async def fit_nb(ctx, fit: str, pfp_id: int):
 async def wallpaper(ctx, wallpaper: str, pfp_id: int):
     # try:
         if wallpaper.lower() in phone_backgrounds:
-            if 0 <= pfp_id <= 5000:
+            if 0 < pfp_id <= 5000:
                 make_wallpaper(wallpaper, str(pfp_id))
                 await ctx.send(file=discord.File(save_img_folder + wallpaper.lower() + str(pfp_id) + '.png'))
                 deleteDressed(wallpaper, str(pfp_id))
@@ -293,7 +293,7 @@ async def wallpaper(ctx, wallpaper: str, pfp_id: int):
 async def hq(ctx, pfp_id: int):
     # try:
 
-            if 0 <= pfp_id <= 5000:
+            if 0 < pfp_id <= 5000:
                 high_quality(str(pfp_id))
                 await ctx.send(file=discord.File(save_img_folder + 'hq' + str(pfp_id) + '.png'))
                 delete_hq(pfp_id)
@@ -304,16 +304,16 @@ async def hq(ctx, pfp_id: int):
 
 @bot.command(name="hqnb", brief='High Resolution Monke No Background', description='This command will return an upscaled version of your monke 1920 x 1920')
 async def hqnb(ctx, pfp_id: int):
-    try:
+    # try:
 
-            if 0 <= pfp_id <= 5000:
+            if 0 < pfp_id <= 5000:
                 high_quality_no_background(str(pfp_id))
                 await ctx.send(file=discord.File(save_img_folder + 'hq' + str(pfp_id) + '.png'))
                 delete_hq(pfp_id)
             else:
                 await ctx.send('Please enter a valid number between 1 and 5000')
-    except:
-        await ctx.send('Something went wrong')
+    # except:
+        # await ctx.send('Something went wrong')
 @bot.event
 async def on_command_error(ctx, error):
     # or discord.ext.commands.errors.CommandNotFound as you wrote
