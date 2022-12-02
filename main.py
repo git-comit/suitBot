@@ -239,10 +239,12 @@ async def wc(ctx, fit: str, pfp_id: int):
                 get_kit(fit, str(pfp_id))
                 await ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
                 deleteDressed(fit, str(pfp_id))
+
+            else: await ctx.send('Please enter a valid number between 1 and 5000.')
         else:
             await ctx.send('Please enter a valid kit. Check ?kits for options')
     except:
-        await ctx.send('Please enter a valid number between 1 and 5000.')
+        await ctx.send('something went wrong')
 
 @bot.command(name="wcnb", brief='World Cup Kits no background', description='This command will let you apply select wc kits to your monke, and return them without a background. type `?kits` to see available countries')
 async def wc_nb(ctx, fit: str, pfp_id: int):
