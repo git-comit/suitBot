@@ -296,7 +296,7 @@ async def hq(ctx, pfp_id: int):
 
 @bot.command(name="hqnb", brief='High Resolution Monke No Background', description='This command will return an upscaled version of your monke 1920 x 1920')
 async def hqnb(ctx, pfp_id: int):
-    try:
+    # try:
 
             if 0 <= pfp_id <= 5000:
                 high_quality_no_background(str(pfp_id))
@@ -304,8 +304,8 @@ async def hqnb(ctx, pfp_id: int):
                 delete_hq(pfp_id)
             else:
                 await ctx.send('Please enter a valid number between 1 and 5000')
-    except:
-        await ctx.send('Please enter a valid number between 1 and 5000.')
+    # except:
+        # await ctx.send('Please enter a valid number between 1 and 5000.')
 @bot.event
 async def on_command_error(ctx, error):
     # or discord.ext.commands.errors.CommandNotFound as you wrote
