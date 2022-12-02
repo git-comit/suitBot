@@ -219,13 +219,15 @@ async def wallpapers(ctx):
 # Lets user know when they enter an invalid command
 
 @bot.command(name="nobackground", brief="this will return the chosen monke with no background")
-def nobackground(ctx, pfp_id: int):
-    if 0 < pfp_id <=5000:
-        ctx.send(file=discord.File(no_background_folder + str(pfp_id) + '.png'))
+async def nobackground(ctx, pfp_id: int):
+    try:
+        if 0 < pfp_id <=5000:
+            await ctx.send(file=discord.File(no_background_folder + str(pfp_id) + '.png'))
 
-    else: ctx.send('Please enter a number between 1 and 5000')
+        else: await ctx.send('Please enter a number between 1 and 5000')
 
-
+    except:
+        await ctx.send("unknow error")
 
 @bot.command(name="wc", brief='World Cup Kits', description='This command will let you apply select wc kits to your monke, type `?kits` to see available countries')
 async def wc(ctx, fit: str, pfp_id: int):
@@ -241,15 +243,17 @@ async def wc(ctx, fit: str, pfp_id: int):
         await ctx.send('Please enter a valid number between 1 and 5000.')
 
 @bot.command(name="wcnb", brief='World Cup Kits no background', description='This command will let you apply select wc kits to your monke, and return them without a background. type `?kits` to see available countries')
-def wc_nb(ctx, fit: str, pfp_id: int):
-
-    if fit.lower() in wc_kits:
-        if 0 <= pfp_id <= 5000:
-            no_background_wc(fit, str(pfp_id))
-            ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
-            deleteDressed(fit, str(pfp_id))
-    else:
-        ctx.send('Please enter a valid kit. Check ?kits for options')
+async def wc_nb(ctx, fit: str, pfp_id: int):
+    try:
+        if fit.lower() in wc_kits:
+            if 0 <= pfp_id <= 5000:
+                no_background_wc(fit, str(pfp_id))
+                await ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
+                deleteDressed(fit, str(pfp_id))
+        else:
+            await ctx.send('Please enter a valid kit. Check ?kits for options')
+    except:
+        await ctx.send('Please enter a valid number between 1 and 5000.')
 
 @bot.command(name="newfitnb", brief='new fits no background', description='This command will let you apply fits, and return them without a background. type `?fits` to see available fits')
 async def fit_nb(ctx, fit: str, pfp_id: int):
@@ -278,25 +282,30 @@ async def wallpaper(ctx, wallpaper: str, pfp_id: int):
         await ctx.send('Please enter a valid number between 1 and 5000.')
 
 @bot.command(name="hq", brief='High Resolution Monke', description='This command will return an upscaled version of your monke 1920 x 1920')
-def hq(ctx, pfp_id: int):
-    if 0 <= pfp_id <= 5000:
-        high_quality(str(pfp_id))
-        ctx.send(file=discord.File(save_img_folder + 'hq' + str(pfp_id) + '.png'))
-        delete_hq(pfp_id)
-    else:
-        ctx.send('Please enter a valid number between 1 and 5000')
+async def hq(ctx, pfp_id: int):
+    try:
 
+            if 0 <= pfp_id <= 5000:
+                high_quality(str(pfp_id))
+                await ctx.send(file=discord.File(save_img_folder + 'hq' + str(pfp_id) + '.png'))
+                delete_hq(pfp_id)
+            else:
+                await ctx.send('Please enter a valid number between 1 and 5000')
+    except:
+        await ctx.send('Please enter a valid number between 1 and 5000.')
 
 @bot.command(name="hqnb", brief='High Resolution Monke No Background', description='This command will return an upscaled version of your monke 1920 x 1920')
-def hqnb(ctx, pfp_id: int):
+async def hqnb(ctx, pfp_id: int):
+    try:
 
-    if 0 <= pfp_id <= 5000:
-        high_quality_no_background(str(pfp_id))
-        ctx.send(file=discord.File(save_img_folder + 'hq' + str(pfp_id) + '.png'))
-        delete_hq(pfp_id)
-    else:
-        ctx.send('Please enter a valid number between 1 and 5000')
-
+            if 0 <= pfp_id <= 5000:
+                high_quality_no_background(str(pfp_id))
+                await ctx.send(file=discord.File(save_img_folder + 'hq' + str(pfp_id) + '.png'))
+                delete_hq(pfp_id)
+            else:
+                await ctx.send('Please enter a valid number between 1 and 5000')
+    except:
+        await ctx.send('Please enter a valid number between 1 and 5000.')
 @bot.event
 async def on_command_error(ctx, error):
     # or discord.ext.commands.errors.CommandNotFound as you wrote
