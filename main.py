@@ -172,16 +172,19 @@ async def on_ready():
 
 @bot.command(name="newfit", brief='Dress your pfp', description='This command will let you apply new fits to your pfp')
 async def newfit(ctx, fit: str, pfp_id: int):
-    try:
+    # try:
         if fit.lower() in outfits:
             if 0 < pfp_id <= 5000:
                 get_dressed(fit, str(pfp_id))
                 await ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
                 deleteDressed(str(pfp_id))
+            else:
+                await ctx.send('Please enter a valid number between 1 and 5000.')
+
         else:
             await ctx.send('Please enter a valid fit. Check ?fits for options')
-    except:
-        await ctx.send('Please enter a valid number between 1 and 5000.')
+    # except:
+        # await ctx.send('Please enter a valid number between 1 and 5000.')
 
 
 @bot.command(name="newbrero", brief='new sombrero for your monke', description='This command will let you apply new sombrero to your pfp')
