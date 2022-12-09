@@ -220,8 +220,8 @@ async def wallpapers(ctx):
 
 # Lets user know when they enter an invalid command
 
-@bot.command(name="nobackground", brief="this will return the chosen monke with no background")
-async def nobackground(ctx, pfp_id: int):
+@bot.command(name="nb", brief="this will return the chosen monke with no background")
+async def nb(ctx, pfp_id: int):
     try:
         if 0 < pfp_id <=5000:
             await ctx.send(file=discord.File(no_background_folder + str(pfp_id) + '.png'))
