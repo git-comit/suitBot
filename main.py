@@ -61,7 +61,7 @@ def download_image(url, image_file_path):
 # Combines the pfp image with a transparent png of the attribute  and saves it to an output directory
 
 
-def get_dressed(fit, pfp_id):
+def get_dressed(fit: str, pfp_id):
     url = (get_pfp_img_url(pfp_id))
     download_image(url, pfp_folder + str(pfp_id) + '.png')
 
