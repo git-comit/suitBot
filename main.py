@@ -38,7 +38,7 @@ wc_kits = ["argentina", "australia", "belgium", "brazil", "canada", "costarica",
 
 sombreros = ["black", "blacktie", "cinco", "easter", "october", "pink"]
 
-phone_backgrounds = ["black_stack", "blue_stack", "blue", "green_icons", "green_md", "green_stack", "green", "white_blue_md", "white_icons", "yellow"]
+phone_backgrounds = ["black_stack", "black", "blue_stack", "blue", "green_icons", "green_md", "green_stack", "green", "white_blue_md", "white_icons", "yellow"]
 
 # Need to add error handling
 
