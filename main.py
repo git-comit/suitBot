@@ -151,7 +151,8 @@ def pfp_background(background, pfp_id:int ):
 
     pfp.paste(monke, (0,0), mask=monke)
 
-    pfp.save(save_img_folder +str(background) + str(pfp_id) '.png')
+    pfp.save(save_img_folder + background.lower() + str(pfp_id) + '.png')
+
 
     return
 
