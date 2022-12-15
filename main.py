@@ -25,6 +25,7 @@ no_background_folder = 'no_background/'
 wc_folder= 'wc_kits/'
 sombrero_folder = 'sombreros/'
 wallpaper_folder = 'wallpapers/'
+pfp_background_folder = 'pfp_backgrounds/'
 # Returns JSON object as a dictionary
 pfp_atts = json.load(data)
 
@@ -138,6 +139,17 @@ def brero_no_background(fit, pfp_id):
 
     pfp.paste(outfit, (0, 0), mask=outfit)
     pfp.save(save_img_folder + fit.lower() + str(pfp_id) + '.png')
+
+    return
+
+def pfp_background(background, fit, pfp_id):
+    pfp= Image.open(pfp_background_folder + background.lower() + '.png')
+    monke = Image.open(no_background_folder + str(pfp_id) + '.png')
+    outfit = Image.open(outfits_folder + fit.lower() + '.png')
+
+    pfp.paste(monke, (0,0), mask=monke)
+    pfp.paste(outfit, (0,0), mask= outfit)
+    pfp.save(save_img_folder +str(fit) + '.png')
 
     return
 
@@ -321,6 +333,23 @@ async def hqnb(ctx, pfp_id: int):
                 await ctx.send('Please enter a valid number between 1 and 5000')
     # except:
         # await ctx.send('Something went wrong')
+
+@bot.command(name='holiday', breif='Holiday monkes', description='backgrounds and outfits for monkes \n takes 2 commands background first \n ie `holiday blue elf 4470` \n use `none` for second command to return without costume')
+async def holiday(ctx, background: str, fit: str, pfp_id: int):
+    if background.lower() in pfp_background_folder:
+        if fit.lower() in outfits_folder:
+            if 0 < pfp_id <= 5000:
+                pfp_background(background, fit, pfp_id)
+                await ctx.send(file=discord.File(save_img_folder + background.lower() + str(pfp_id) + '.png'))
+                deleteDressed(background, str(pfp_id))
+
+            else: await ctx.send('Please enter a valid number between 1 and 5000.')
+
+        else: await ctx.send('Please enter a valid outfit. Check `?fits` or use `none`')
+    else:
+        await ctx.send('Please enter a valid background. Check `?holiday_bg` for options')
+    # except:
+        # await ctx.send('Please enter a valid number between 1 and 5000.')
 @bot.event
 async def on_command_error(ctx, error):
     # or discord.ext.commands.errors.CommandNotFound as you wrote
