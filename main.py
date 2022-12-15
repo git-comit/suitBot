@@ -340,11 +340,11 @@ async def hqnb(ctx, pfp_id: int):
         # await ctx.send('Something went wrong')
 
 @bot.command(name='holiday', breif='Holiday monkes', description='backgrounds and outfits for monkes \n takes 2 commands background first \n ie `holiday blue elf 4470` \n use `none` for second command to return without costume')
-async def holiday(ctx, background: str, pfp_id: int, fit: str):
+async def holiday(ctx, background: str, pfp_id: int):
     if background.lower() in pfp_backgrounds:
 
         if 0 < pfp_id <= 5000:
-            pfp_background(background,pfp_id, fit)
+            pfp_background(background,pfp_id)
             await ctx.send(file=discord.File(save_img_folder + background.lower() + str(pfp_id) + '.png'))
             deleteDressed(background, str(pfp_id))
 
