@@ -236,7 +236,7 @@ async def wallpapers(ctx):
     await ctx.send('**List of wallpapers (please choose from one of the below)**\n\n' + "\n".join(phone_backgrounds))
 
 @bot.command(brief='List avaiable holiday backgrounds', description='This command will list the different backgrounds')
-async def fits(ctx):
+async def holiday_bg(ctx):
     await ctx.send('**List of backgrounds (please choose from one of the below)**\n\n' + "\n".join(pfp_backgrounds))
 # Lets user know when they enter an invalid command
 
