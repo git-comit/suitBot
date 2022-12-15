@@ -41,6 +41,8 @@ sombreros = ["black", "blacktie", "cinco", "easter", "october", "pink"]
 
 phone_backgrounds = ["all_black", "black_fade","black_stack",  "blue_stack", "blue", "green_icons", "green_md", "green_stack", "green", "white_blue_md", "white_icons", "yellow"]
 
+pfp_backgrounds = ["blue", "green", "red"]
+
 # Need to add error handling
 
 def get_pfp_img_url(id):
@@ -233,6 +235,9 @@ async def sombrero(ctx):
 async def wallpapers(ctx):
     await ctx.send('**List of wallpapers (please choose from one of the below)**\n\n' + "\n".join(phone_backgrounds))
 
+@bot.command(brief='List avaiable holiday backgrounds', description='This command will list the different backgrounds')
+async def fits(ctx):
+    await ctx.send('**List of backgrounds (please choose from one of the below)**\n\n' + "\n".join(pfp_backgrounds))
 # Lets user know when they enter an invalid command
 
 @bot.command(name="nb", brief="this will return the chosen monke with no background")
@@ -336,8 +341,8 @@ async def hqnb(ctx, pfp_id: int):
 
 @bot.command(name='holiday', breif='Holiday monkes', description='backgrounds and outfits for monkes \n takes 2 commands background first \n ie `holiday blue elf 4470` \n use `none` for second command to return without costume')
 async def holiday(ctx, background: str, fit: str, pfp_id: int):
-    if background.lower() in pfp_background_folder:
-        if fit.lower() in outfits_folder:
+    if background.lower() in pfp_backgrounds:
+        if fit.lower() in outfits:
             if 0 < pfp_id <= 5000:
                 pfp_background(background, fit, pfp_id)
                 await ctx.send(file=discord.File(save_img_folder + background.lower() + str(pfp_id) + '.png'))
