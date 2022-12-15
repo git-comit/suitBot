@@ -144,14 +144,14 @@ def brero_no_background(fit, pfp_id):
 
     return
 
-def pfp_background(background, pfp_id, fit):
+def pfp_background(background, pfp_id):
     pfp= Image.open(pfp_background_folder + background.lower() + '.png')
     monke = Image.open(no_background_folder + str(pfp_id) + '.png')
-    outfit = Image.open(outfits_folder + fit.lower() + '.png')
+
 
     pfp.paste(monke, (0,0), mask=monke)
-    pfp.paste(outfit, (0,0), mask= outfit)
-    pfp.save(save_img_folder +str(fit) + '.png')
+
+    pfp.save(save_img_folder +str(background) + '.png')
 
     return
 
@@ -342,15 +342,15 @@ async def hqnb(ctx, pfp_id: int):
 @bot.command(name='holiday', breif='Holiday monkes', description='backgrounds and outfits for monkes \n takes 2 commands background first \n ie `holiday blue elf 4470` \n use `none` for second command to return without costume')
 async def holiday(ctx, background: str, pfp_id: int, fit: str):
     if background.lower() in pfp_backgrounds:
-        if fit.lower() in outfits:
-            if 0 < pfp_id <= 5000:
-                pfp_background(background,pfp_id, fit)
-                await ctx.send(file=discord.File(save_img_folder + background.lower() + str(pfp_id) + '.png'))
-                deleteDressed(background, str(pfp_id))
 
-            else: await ctx.send('Please enter a valid number between 1 and 5000.')
+        if 0 < pfp_id <= 5000:
+            pfp_background(background,pfp_id, fit)
+            await ctx.send(file=discord.File(save_img_folder + background.lower() + str(pfp_id) + '.png'))
+            deleteDressed(background, str(pfp_id))
 
-        else: await ctx.send('Please enter a valid outfit. Check `?fits` or use `none`')
+        else: await ctx.send('Please enter a valid number between 1 and 5000.')
+
+
     else:
         await ctx.send('Please enter a valid background. Check `?holiday_bg` for options')
     # except:
