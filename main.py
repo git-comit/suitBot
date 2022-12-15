@@ -144,14 +144,14 @@ def brero_no_background(fit, pfp_id):
 
     return
 
-def pfp_background(background, pfp_id):
+def pfp_background(background, pfp_id:int ):
     pfp= Image.open(pfp_background_folder + background.lower() + '.png')
     monke = Image.open(no_background_folder + str(pfp_id) + '.png')
 
 
     pfp.paste(monke, (0,0), mask=monke)
 
-    pfp.save(save_img_folder +str(background) + '.png')
+    pfp.save(save_img_folder +str(background) + str(pfp_id) '.png')
 
     return
 
