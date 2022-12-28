@@ -290,7 +290,7 @@ async def fit_nb(ctx, fit: str, pfp_id: int):
             if 0 < pfp_id <= 5000:
                 no_background_fit(fit, str(pfp_id))
                 await ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
-                deleteDressed(fit, str(pfp_id))
+                deleteDressed(fit.lower(), str(pfp_id))
 
             else: await ctx.send('Please enter a valid number between 1 and 5000.')
 
@@ -304,9 +304,9 @@ async def wallpaper(ctx, wallpaper: str, pfp_id: int):
     # try:
         if wallpaper.lower() in phone_backgrounds:
             if 0 < pfp_id <= 5000:
-                make_wallpaper(wallpaper, str(pfp_id))
+                make_wallpaper(wallpaper.lower(), str(pfp_id))
                 await ctx.send(file=discord.File(save_img_folder + wallpaper.lower() + str(pfp_id) + '.png'))
-                deleteDressed(wallpaper, str(pfp_id))
+                deleteDressed(wallpaper.lower(), str(pfp_id))
 
             else: await ctx.send('Please enter a valid number between 1 and 5000.')
         else:
