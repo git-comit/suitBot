@@ -175,7 +175,6 @@ def make_smol(pfp_id):
     smol_im = pfp.resize((int(pfp.width/3), int(pfp.height/3)))
 
     smol = Image.new('RGB', (384, 384), (r, g, b))
-    print(smol)
     smol.paste(smol_im, (128,256), mask=smol_im)
 
     smol.save(save_img_folder + 'smol' +str(pfp_id) + '.png')
@@ -362,8 +361,6 @@ async def hqnb(ctx, pfp_id: int):
 
 @bot.command(name="smol", breif='A smol monke', description='will return a smol monke')
 async def smol(ctx, pfp_id):
-    await ctx.send('work in progress')
-    print(pfp_id)
     if 0 < int(pfp_id) <= 5000:
         print('working')
         make_smol(pfp_id)
