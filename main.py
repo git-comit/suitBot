@@ -363,10 +363,11 @@ async def hqnb(ctx, pfp_id: int):
 @bot.command(name="smol", breif='A smol monke', description='will return a smol monke')
 async def smol(ctx, pfp_id):
     await ctx.send('work in progress')
+    print(pfp_id)
     if 0 < pfp_id <= 5000:
         make_smol(pfp_id)
         await ctx.send(file=discord.File(save_img_folder + 'smol' + str(pfp_id) + '.png'))
-        delete_smol(pfp_id)
+        # delete_smol(pfp_id)
     else:
         await ctx.send('Please enter a valid number between 1 and 5000')
 
