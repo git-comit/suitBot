@@ -181,6 +181,21 @@ def make_smol(pfp_id):
 
     return
 
+def make_smoller(pfp_id):
+    url = (get_pfp_img_url(pfp_id))
+    download_image(url, pfp_folder + str(pfp_id) + '.png')
+    pfp = Image.open(pfp_folder + str(pfp_id) + '.png')
+    pfp_bg_color = pfp.convert('RGB')
+    r,g,b = pfp_bg_color.getpixel((300,300))
+    smol_im = pfp.resize((int(pfp.width/6), int(pfp.height/6)))
+
+    smol = Image.new('RGB', (384, 384), (r, g, b))
+    smol.paste(smol_im, (128,256), mask=smol_im)
+
+    smol.save(save_img_folder + 'smol' +str(pfp_id) + '.png')
+
+    return
+
 def high_quality_no_background(pfp_id):
 
     pfp = Image.open(no_background_folder + str(pfp_id) + '.png')
@@ -362,13 +377,20 @@ async def hqnb(ctx, pfp_id: int):
 @bot.command(name="smol", breif='A smol monke', description='will return a smol monke')
 async def smol(ctx, pfp_id):
     if 0 < int(pfp_id) <= 5000:
-        print('working')
         make_smol(pfp_id)
         await ctx.send(file=discord.File(save_img_folder + 'smol' + str(pfp_id) + '.png'))
         # delete_smol(pfp_id)
     else:
         await ctx.send('Please enter a valid number between 1 and 5000')
 
+@bot.command(name="smoller", breif='A smol monke', description='will return a smol monke')
+async def smoller(ctx, pfp_id):
+    if 0 < int(pfp_id) <= 5000:
+        make_smoller(pfp_id)
+        await ctx.send(file=discord.File(save_img_folder + 'smol' + str(pfp_id) + '.png'))
+        # delete_smol(pfp_id)
+    else:
+        await ctx.send('Please enter a valid number between 1 and 5000')
 
 @bot.command(name='holiday', breif='Holiday monkes', description='backgrounds for monkes \n takes 1 command `holiday blue 4470` ')
 async def holiday(ctx, background: str, pfp_id: int):
