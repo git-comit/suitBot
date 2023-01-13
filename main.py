@@ -160,15 +160,31 @@ def high_quality(pfp_id):
     url = (get_pfp_img_url(pfp_id))
     download_image(url, pfp_folder + str(pfp_id) + '.png')
 
-    pfp = pfp = Image.open(pfp_folder + str(pfp_id) + '.png')
+    pfp = Image.open(pfp_folder + str(pfp_id) + '.png')
     monke = pfp.resize((int(pfp.width*5), int(pfp.height*5)))
     monke.save(save_img_folder + 'hq' + str(pfp_id) + '.png')
 
     return
 
+def make_smol(pfp_id):
+    url = (get_pfp_img_url(pfp_id))
+    download_image(url, pfp_folder + str(pfp_id) + '.png')
+    pfp = Image.open(pfp_folder + str(pfp_id) + '.png')
+    pfp_bg_color = pfp.convert('RGB')
+    r,g,b = pfp_bg_color.getpixel((300,300))
+    smol_im = pfp.resize((int(pfp.width/3), int(pfp.height/3)))
+
+    smol = Image.new('RGB', (384, 384), (r, g, b))
+
+    smol.paste(smol_im, (0,0), mask=smol_im)
+
+    smol.save(save_img_folder + 'smol' +str(pfp_id) + '.png')
+
+    return
+
 def high_quality_no_background(pfp_id):
 
-    pfp = pfp = Image.open(no_background_folder + str(pfp_id) + '.png')
+    pfp = Image.open(no_background_folder + str(pfp_id) + '.png')
     monke = pfp.resize((int(pfp.width*5), int(pfp.height*5)))
     monke.save(save_img_folder + 'hq' + str(pfp_id) + '.png')
 
@@ -176,6 +192,10 @@ def high_quality_no_background(pfp_id):
 
 def delete_hq(pfp_id):
     os.remove(save_img_folder + 'hq' + str(pfp_id) + '.png')
+    os.remove(pfp_folder + str(pfp_id) + '.png')
+
+def delete_smol(pfp_id):
+    os.remove(save_img_folder + 'smol' + str(pfp_id) + '.png')
     os.remove(pfp_folder + str(pfp_id) + '.png')
 
 @bot.event
@@ -339,6 +359,16 @@ async def hqnb(ctx, pfp_id: int):
                 await ctx.send('Please enter a valid number between 1 and 5000')
     # except:
         # await ctx.send('Something went wrong')
+
+@bot.command(name="smol", breif='A smol monke')
+async def smol(ctx, pfp_id):
+    if 0 < pfp_id <= 5000:
+        make_smol(pfp_id)
+        await ctx.send(file=discord.File(save_img_folder + 'smol' + str(pfp_id) + '.png'))
+        delete_smol(pfp_id)
+    else:
+        await ctx.send('Please enter a valid number between 1 and 5000')
+
 
 @bot.command(name='holiday', breif='Holiday monkes', description='backgrounds for monkes \n takes 1 command `holiday blue 4470` ')
 async def holiday(ctx, background: str, pfp_id: int):
