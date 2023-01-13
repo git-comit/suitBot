@@ -362,6 +362,7 @@ async def hqnb(ctx, pfp_id: int):
 
 @bot.command(name="smol", breif='A smol monke', description='will return a smol monke')
 async def smol(ctx, pfp_id):
+    await ctx.send('work in progress')
     if 0 < pfp_id <= 5000:
         make_smol(pfp_id)
         await ctx.send(file=discord.File(save_img_folder + 'smol' + str(pfp_id) + '.png'))
