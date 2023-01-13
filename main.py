@@ -190,7 +190,7 @@ def make_smoller(pfp_id):
     smol_im = pfp.resize((int(pfp.width/6), int(pfp.height/6)))
 
     smol = Image.new('RGB', (384, 384), (r, g, b))
-    smol.paste(smol_im, (192,352), mask=smol_im)
+    smol.paste(smol_im, (192,320), mask=smol_im)
 
     smol.save(save_img_folder + 'smol' +str(pfp_id) + '.png')
 
