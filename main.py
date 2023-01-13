@@ -176,7 +176,7 @@ def make_smol(pfp_id):
 
     smol = Image.new('RGB', (384, 384), (r, g, b))
     print(smol)
-    smol.paste(smol_im, (192,192), mask=smol_im)
+    smol.paste(smol_im, (384,384), mask=smol_im)
 
     smol.save(save_img_folder + 'smol' +str(pfp_id) + '.png')
 
