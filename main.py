@@ -688,7 +688,7 @@ async def smoller(ctx, pfp_id):
         await ctx.send('Please enter a valid number between 1 and 5000')
 
 
-@bot.command(name="smol", breif='A smol monke')
+@bot.command(name="smol", breif='A smol monke', description='will return a smol monke')
 async def smol(ctx, pfp_id):
     if 0 < pfp_id <= 5000:
         make_smol(pfp_id)
