@@ -693,6 +693,7 @@ async def smol(ctx, pfp_id):
     await ctx.send('work in progress')
     print(pfp_id)
     if 0 < pfp_id <= 5000:
+        print('working')
         make_smol(pfp_id)
         await ctx.send(file=discord.File(save_img_folder + 'smol' + str(pfp_id) + '.png'))
         # delete_smol(pfp_id)
