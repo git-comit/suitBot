@@ -360,7 +360,7 @@ async def hqnb(ctx, pfp_id: int):
     # except:
         # await ctx.send('Something went wrong')
 
-@bot.command(name="smol", breif='A smol monke')
+@bot.command(name="smol", breif='A smol monke', description='will return a smol monke')
 async def smol(ctx, pfp_id):
     if 0 < pfp_id <= 5000:
         make_smol(pfp_id)
