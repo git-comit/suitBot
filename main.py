@@ -32,7 +32,7 @@ pfp_atts = json.load(data)
 
 # list of the various outfits you want to offer. these should match the filename on the outfit pngs
 
-outfits = ["bandito_santa_full", "bandito_santa","blue","cape", "daovote", "elf", "ghost","halo", "horns","portugal", "portugalsolana","pumpkin", "santa", "santa_hat", "sombrero", "suit-blk", "suit-pink", "vote","votebrero", "vr"]
+outfits = ["bandito_santa_full", "bandito_santa","blue","cape", "daovote", "elf", "ghost","halo", "horns","portugal", "portugalsolana","pumpkin", "santa", "santa_hat", "sombrero", "stronger", "suit-blk", "suit-pink", "vote","votebrero", "vr"]
 
 wc_kits = ["argentina", "australia", "belgium", "brazil", "canada", "costarica", "croatia", "england", "france", "germany", "italy", "mexico", "mexico+", "netherlands", "portugal", "serbia", "southkorea", "spain", "usa"]
 # Search for the pfp id in the JSON dictionary and return the image URL associated with that id. You'll need to update the keys to match what's in your JSON delattr
