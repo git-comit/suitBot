@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-
+import io
 import json
 import requests
 import PIL
@@ -37,7 +37,7 @@ phone_backgrounds = ["all_black", "black_fade","black_stack",  "blue_stack", "bl
 
 pfp_backgrounds = ["blue", "green", "red"]
 
-banners = ["black", "blue_bananas", "blue_green_wave", "blue", "green_bananas", "green_wave", "green", "monkeDAO_green", "monkeDAO1", "monkeDAO2", "white_bananas", "wordmark_blue", "wordmark_green", "yello_blue"]
+banners = ["black", "blue_bananas", "blue_green_wave", "blue", "green_bananas", "green_wave", "green", "monkeDAO_green", "monkeDAO1", "monkeDAO2", "white_bananas", "wordmark_blue", "wordmark_green", "yellow_blue"]
 
 
 # Need to add error handling
@@ -84,11 +84,23 @@ def make_wallpaper(wallpaper, pfp_id):
 
     return
 
-def make_banner(banner, pfp_id) :
-    background = Image.open(banner_folder + banner.lower() + '.png')
+def make_banner(ban, pfp_id) :
+    banner_string = ban.lower()
+    url = (get_pfp_img_url(pfp_id))
+    download_image(url, pfp_folder + str(pfp_id) + '.png')
+    background = Image.open(banner_folder + banner_string + '.png')
 
-    for b in banners:
-        print(b)
+    if banner_string == "yellow_blue" or banner_string == "blue_green_wave":
 
+        monke = Image.open(pfp_folder + str(pfp_id) + '.png')
+        print(banner_string)
+    else:
+        monke = Image.open(no_background_folder + pfp_id + '.png')
+        print("no")
 
-make_banner("green", 1)
+    background.paste(monke, (0, 0), mask=monke)
+    background.save(save_img_folder + banner_string + str(pfp_id) + '.png')
+
+    return
+
+make_banner("blue_green_wave", "100")
