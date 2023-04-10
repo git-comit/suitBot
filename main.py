@@ -456,8 +456,8 @@ async def banner(ctx, fit: str, pfp_id: int):
             else: await ctx.send('Please enter a valid number between 1 and 5000.')
         else:
             await ctx.send('Please enter a valid fit. Check ?sombrero for options')
-    except:
-        await ctx.send('something went wrong')
+    # except:
+    #     await ctx.send('something went wrong')
 @bot.event
 async def on_command_error(ctx, error):
     # or discord.ext.commands.errors.CommandNotFound as you wrote
