@@ -93,14 +93,21 @@ def make_banner(ban, pfp_id) :
     if banner_string == "yellow_blue" or banner_string == "blue_green_wave":
 
         monke = Image.open(pfp_folder + str(pfp_id) + '.png')
-        print(banner_string)
+        monke = monke.resize((int(monke.width*2.60416666667), int(monke.height*2.60416666667)))
+
+        background.paste(monke, (2040, 0), mask=monke)
+        background.save(save_img_folder + banner_string + str(pfp_id) + '.png')
+
+        print('no')
     else:
         monke = Image.open(no_background_folder + pfp_id + '.png')
-        print("no")
+        monke = monke.resize((int(monke.width*2.60416666667), int(monke.height*2.60416666667)))
 
-    background.paste(monke, (0, 0), mask=monke)
-    background.save(save_img_folder + banner_string + str(pfp_id) + '.png')
+        background.paste(monke, (1000, 0), mask=monke)
+        background.save(save_img_folder + banner_string + str(pfp_id) + '.png')
+
+        print(banner_string)
 
     return
 
-make_banner("blue_green_wave", "100")
+make_banner("black", "890")
