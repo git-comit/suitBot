@@ -45,7 +45,7 @@ phone_backgrounds = ["all_black", "black_fade","black_stack",  "blue_stack", "bl
 
 pfp_backgrounds = ["blue", "green", "red"]
 
-banners = ["black", "blue_bananas", "blue_green_wave", "blue", "green_bananas", "green_wave", "green", "monkeDAO_green", "monkeDAO1", "monkeDAO2", "white_bananas", "wordmark_blue", "wordmark_green", "yellow_blue"]
+banners = ["black", "blue_bananas", "blue_green_wave", "blue", "green_bananas", "green_wave", "green", "monkedao_green", "monkedao1", "monkedao2", "white_bananas", "wordmark_blue", "wordmark_green", "yellow_blue"]
 
 # Need to add error handling
 
