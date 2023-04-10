@@ -98,7 +98,6 @@ def make_banner(ban, pfp_id) :
         background.paste(monke, (2040, 0), mask=monke)
         background.save(save_img_folder + banner_string + str(pfp_id) + '.png')
 
-        print('no')
     else:
         monke = Image.open(no_background_folder + pfp_id + '.png')
         monke = monke.resize((int(monke.width*2.60416666667), int(monke.height*2.60416666667)))
@@ -106,8 +105,6 @@ def make_banner(ban, pfp_id) :
         background.paste(monke, (1000, 0), mask=monke)
         background.save(save_img_folder + banner_string + str(pfp_id) + '.png')
 
-        print(banner_string)
 
     return
 
-make_banner("black", "890")

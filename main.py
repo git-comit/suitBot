@@ -26,6 +26,8 @@ wc_folder= 'wc_kits/'
 sombrero_folder = 'sombreros/'
 wallpaper_folder = 'wallpapers/'
 pfp_background_folder = 'pfp_backgrounds/'
+banner_folder = 'banners/'
+
 # Returns JSON object as a dictionary
 pfp_atts = json.load(data)
 
@@ -42,6 +44,8 @@ sombreros = ["black", "blacktie", "cinco", "easter", "october", "pink"]
 phone_backgrounds = ["all_black", "black_fade","black_stack",  "blue_stack", "blue", "green_icons", "green_md", "green_stack", "green", "white_blue_md", "white_icons", "yellow"]
 
 pfp_backgrounds = ["blue", "green", "red"]
+
+banners = ["black", "blue_bananas", "blue_green_wave", "blue", "green_bananas", "green_wave", "green", "monkeDAO_green", "monkeDAO1", "monkeDAO2", "white_bananas", "wordmark_blue", "wordmark_green", "yellow_blue"]
 
 # Need to add error handling
 
@@ -196,6 +200,32 @@ def make_smoller(pfp_id):
 
     return
 
+
+def make_banner(ban, pfp_id) :
+    banner_string = ban.lower()
+    url = (get_pfp_img_url(pfp_id))
+    download_image(url, pfp_folder + str(pfp_id) + '.png')
+    background = Image.open(banner_folder + banner_string + '.png')
+
+    if banner_string == "yellow_blue" or banner_string == "blue_green_wave":
+
+        monke = Image.open(pfp_folder + str(pfp_id) + '.png')
+        monke = monke.resize((int(monke.width*2.60416666667), int(monke.height*2.60416666667)))
+
+        background.paste(monke, (2040, 0), mask=monke)
+        background.save(save_img_folder + banner_string + str(pfp_id) + '.png')
+
+    else:
+        monke = Image.open(no_background_folder + pfp_id + '.png')
+        monke = monke.resize((int(monke.width*2.60416666667), int(monke.height*2.60416666667)))
+
+        background.paste(monke, (1000, 0), mask=monke)
+        background.save(save_img_folder + banner_string + str(pfp_id) + '.png')
+
+
+    return
+
+
 def high_quality_no_background(pfp_id):
 
     pfp = Image.open(no_background_folder + str(pfp_id) + '.png')
@@ -273,6 +303,11 @@ async def wallpapers(ctx):
 @bot.command(brief='List avaiable holiday backgrounds', description='This command will list the different backgrounds')
 async def holiday_bg(ctx):
     await ctx.send('**List of backgrounds (please choose from one of the below)**\n\n' + "\n".join(pfp_backgrounds))
+
+@bot.command(brief='List avaiable banners', description='This command will list the different banners')
+async def list_banners(ctx):
+    await ctx.send('**List of Fits (please choose from one of the below)**\n\n' + "\n".join(banners))
+
 # Lets user know when they enter an invalid command
 
 @bot.command(name="nb", brief="this will return the chosen monke with no background")
@@ -408,6 +443,21 @@ async def holiday(ctx, background: str, pfp_id: int):
         await ctx.send('Please enter a valid background. Check `?holiday_bg` for options')
     # except:
         # await ctx.send('Please enter a valid number between 1 and 5000.')
+
+@bot.command(name="banner", brief='Twitter banner for your Monke', description='will create a custom banner for twitter')
+async def banner(ctx, fit: str, pfp_id: int):
+    try:
+        if fit.lower() in banners:
+            if 0 < pfp_id <= 5000:
+                make_banner(fit, str(pfp_id))
+                await ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
+                deleteDressed(str(pfp_id))
+
+            else: await ctx.send('Please enter a valid number between 1 and 5000.')
+        else:
+            await ctx.send('Please enter a valid fit. Check ?sombrero for options')
+    except:
+        await ctx.send('something went wrong')
 @bot.event
 async def on_command_error(ctx, error):
     # or discord.ext.commands.errors.CommandNotFound as you wrote
