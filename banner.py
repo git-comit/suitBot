@@ -100,11 +100,12 @@ def make_banner(ban, pfp_id) :
 
     else:
         monke = Image.open(no_background_folder + pfp_id + '.png')
-        monke = monke.resize((int(monke.width*2.60416666667), int(monke.height*2.60416666667)))
+        monke = monke.resize((int(monke.width*1.5), int(monke.height*1.5)))
 
-        background.paste(monke, (1000, 0), mask=monke)
+        background.paste(monke, (1500, 424), mask=monke)
         background.save(save_img_folder + banner_string + str(pfp_id) + '.png')
 
 
     return
 
+make_banner("black", "4470")
