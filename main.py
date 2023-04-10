@@ -255,7 +255,7 @@ async def on_ready():
 # !newfit command executes the get_dressed function and returns the resulting image. It accepts a value between 1 and 5000. Update this to use the command name you want and the values to fit the range of your project
 
 
-@bot.command(name="newfit", brief='Dress your pfp', description='This command will let you apply new fits to your pfp')
+@bot.command(name="newfit", brief='Dress your pfp see `?fits`', description='This command will let you apply new fits to your pfp')
 async def newfit(ctx, fit: str, pfp_id: int):
     # try:
         if fit.lower() in outfits:
