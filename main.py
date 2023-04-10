@@ -215,11 +215,18 @@ def make_banner(ban, pfp_id) :
         background.paste(monke, (2040, 0), mask=monke)
         background.save(save_img_folder + banner_string + str(pfp_id) + '.png')
 
-    else:
+    if banner_string == "black" or banner_string == "blue" or banner_string == "green":
         monke = Image.open(no_background_folder + pfp_id + '.png')
         monke = monke.resize((int(monke.width*1.5), int(monke.height*1.5)))
 
         background.paste(monke, (1500, 424), mask=monke)
+        background.save(save_img_folder + banner_string + str(pfp_id) + '.png')
+
+    else:
+        monke = Image.open(no_background_folder + pfp_id + '.png')
+        monke = monke.resize((int(monke.width*1.5), int(monke.height*1.5)))
+
+        background.paste(monke, (2000, 424), mask=monke)
         background.save(save_img_folder + banner_string + str(pfp_id) + '.png')
 
     return
