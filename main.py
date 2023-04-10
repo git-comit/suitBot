@@ -296,7 +296,7 @@ async def fits(ctx):
 
 @bot.command(brief='show docs', description='help document')
 async def docs(ctx):
-    await ctx.send(file=discord.File('gitbookdocs.md'))
+    await ctx.send(file=discord.File("https://monkedao.gitbook.io/welcome-to-monkedao/monke-outfits"))
 
 @bot.command(brief='List avaiable World Cup kits', description='This command will list the different World Cup kits available to you')
 async def kits(ctx):
