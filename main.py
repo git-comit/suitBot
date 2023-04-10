@@ -446,7 +446,6 @@ async def holiday(ctx, background: str, pfp_id: int):
 
 @bot.command(name="banner", brief='Twitter banner for your Monke', description='will create a custom banner for twitter')
 async def banner(ctx, fit: str, pfp_id: int):
-    try:
         if fit.lower() in banners:
             if 0 < pfp_id <= 5000:
                 make_banner(fit, str(pfp_id))
