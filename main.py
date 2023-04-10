@@ -294,6 +294,10 @@ async def newbrero(ctx, fit: str, pfp_id: int):
 async def fits(ctx):
     await ctx.send('**List of Fits (please choose from one of the below)**\n\n' + "\n".join(outfits))
 
+@bot.command(brief='show docs', description='help document')
+async def docs(ctx):
+    await ctx.send(file=discord.File('gitbookdocs.md'))
+
 @bot.command(brief='List avaiable World Cup kits', description='This command will list the different World Cup kits available to you')
 async def kits(ctx):
     await ctx.send('**List of Fits (please choose from one of the below)**\n\n' + "\n".join(wc_kits))
