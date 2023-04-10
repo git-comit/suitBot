@@ -460,7 +460,7 @@ async def banner(ctx, fit: str, pfp_id: int):
 
             else: await ctx.send('Please enter a valid number between 1 and 5000.')
         else:
-            await ctx.send('Please enter a valid fit. Check ?sombrero for options')
+            await ctx.send('Please enter a valid fit. Check ?list_banners for options')
     # except:
     #     await ctx.send('something went wrong')
 @bot.event
