@@ -259,7 +259,7 @@ async def on_ready():
 async def newfit(ctx, fit: str, pfp_id: int):
     # try:
         if fit.lower() in outfits:
-            if 0 < pfp_id <= 5000:
+            if 0 < pfp_id <= 5001:
                 get_dressed(fit, str(pfp_id))
                 await ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
                 deleteDressed(str(pfp_id))
@@ -276,7 +276,7 @@ async def newfit(ctx, fit: str, pfp_id: int):
 async def newbrero(ctx, fit: str, pfp_id: int):
     try:
         if fit.lower() in sombreros:
-            if 0 < pfp_id <= 5000:
+            if 0 < pfp_id <= 5001:
                 get_brero(fit, str(pfp_id))
                 await ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
                 deleteDressed(str(pfp_id))
@@ -323,7 +323,7 @@ async def list_banners(ctx):
 @bot.command(name="nb", brief="this will return the chosen monke with no background")
 async def nb(ctx, pfp_id: int):
     try:
-        if 0 < pfp_id <=5000:
+        if 0 < pfp_id <=5001:
             await ctx.send(file=discord.File(no_background_folder + str(pfp_id) + '.png'))
 
         else: await ctx.send('Please enter a number between 1 and 5000')
@@ -335,7 +335,7 @@ async def nb(ctx, pfp_id: int):
 async def wc(ctx, fit: str, pfp_id: int):
     try:
         if fit.lower() in wc_kits:
-            if 0 < pfp_id <= 5000:
+            if 0 < pfp_id <= 5001:
                 get_kit(fit, str(pfp_id))
                 await ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
                 deleteDressed(fit, str(pfp_id))
@@ -350,7 +350,7 @@ async def wc(ctx, fit: str, pfp_id: int):
 async def wc_nb(ctx, fit: str, pfp_id: int):
     # try:
         if fit.lower() in wc_kits:
-            if 0 < pfp_id <= 5000:
+            if 0 < pfp_id <= 5001:
                 no_background_wc(fit, str(pfp_id))
                 await ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
                 deleteDressed(fit, str(pfp_id))
@@ -366,7 +366,7 @@ async def wc_nb(ctx, fit: str, pfp_id: int):
 async def fit_nb(ctx, fit: str, pfp_id: int):
     # try:
         if fit.lower() in outfits:
-            if 0 < pfp_id <= 5000:
+            if 0 < pfp_id <= 5001:
                 no_background_fit(fit, str(pfp_id))
                 await ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
                 deleteDressed(fit.lower(), str(pfp_id))
@@ -382,7 +382,7 @@ async def fit_nb(ctx, fit: str, pfp_id: int):
 async def wallpaper(ctx, wallpaper: str, pfp_id: int):
     # try:
         if wallpaper.lower() in phone_backgrounds:
-            if 0 < pfp_id <= 5000:
+            if 0 < pfp_id <= 5001:
                 make_wallpaper(wallpaper.lower(), str(pfp_id))
                 await ctx.send(file=discord.File(save_img_folder + wallpaper.lower() + str(pfp_id) + '.png'))
                 deleteDressed(wallpaper.lower(), str(pfp_id))
@@ -397,7 +397,7 @@ async def wallpaper(ctx, wallpaper: str, pfp_id: int):
 async def hq(ctx, pfp_id: int):
     # try:
 
-            if 0 < pfp_id <= 5000:
+            if 0 < pfp_id <= 5001:
                 high_quality(str(pfp_id))
                 await ctx.send(file=discord.File(save_img_folder + 'hq' + str(pfp_id) + '.png'))
                 delete_hq(pfp_id)
@@ -410,7 +410,7 @@ async def hq(ctx, pfp_id: int):
 async def hqnb(ctx, pfp_id: int):
     # try:
 
-            if 0 < pfp_id <= 5000:
+            if 0 < pfp_id <= 5001:
                 high_quality_no_background(str(pfp_id))
                 await ctx.send(file=discord.File(save_img_folder + 'hq' + str(pfp_id) + '.png'))
                 delete_hq(pfp_id)
@@ -421,7 +421,7 @@ async def hqnb(ctx, pfp_id: int):
 
 @bot.command(name="smol", breif='A smol monke', description='will return a smol monke')
 async def smol(ctx, pfp_id):
-    if 0 < int(pfp_id) <= 5000:
+    if 0 < int(pfp_id) <= 5001:
         make_smol(pfp_id)
         await ctx.send(file=discord.File(save_img_folder + 'smol' + str(pfp_id) + '.png'))
         # delete_smol(pfp_id)
@@ -430,7 +430,7 @@ async def smol(ctx, pfp_id):
 
 @bot.command(name="smoller", breif='A smol monke', description='will return a smol monke')
 async def smoller(ctx, pfp_id):
-    if 0 < int(pfp_id) <= 5000:
+    if 0 < int(pfp_id) <= 5001:
         make_smoller(pfp_id)
         await ctx.send(file=discord.File(save_img_folder + 'smol' + str(pfp_id) + '.png'))
         # delete_smol(pfp_id)
@@ -441,7 +441,7 @@ async def smoller(ctx, pfp_id):
 async def holiday(ctx, background: str, pfp_id: int):
     if background.lower() in pfp_backgrounds:
 
-        if 0 < pfp_id <= 5000:
+        if 0 < pfp_id <= 5001:
             pfp_background(background,pfp_id)
             await ctx.send(file=discord.File(save_img_folder + background.lower() + str(pfp_id) + '.png'))
             deleteDressed(background, str(pfp_id))
@@ -457,7 +457,7 @@ async def holiday(ctx, background: str, pfp_id: int):
 @bot.command(name="banner", brief='Twitter banner for your Monke', description='will create a custom banner for twitter')
 async def banner(ctx, fit: str, pfp_id: int):
         if fit.lower() in banners:
-            if 0 < pfp_id <= 5000:
+            if 0 < pfp_id <= 5001:
                 make_banner(fit, str(pfp_id))
                 await ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
                 deleteDressed(str(pfp_id))
