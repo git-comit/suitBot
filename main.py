@@ -327,7 +327,7 @@ async def gif(ctx, gif: str, pfp_id: int):
     # try:
     if gif.lower() in gifs:
         if 0 < pfp_id <= 5001:
-            make_gif(gif, str(pfp_id))
+            await make_gif(gif, str(pfp_id))
             await ctx.send(file=discord.File(save_img_folder + gif.lower() + str(pfp_id) + '.gif'))
             delete_gif(gif, pfp_id)
         else:
@@ -361,8 +361,8 @@ async def fits(ctx):
     await ctx.send('**List of Fits (please choose from one of the below)**\n\n' + "\n".join(outfits))
 
 
-@bot.command(brief='List avaiable gifs')
-async def gifs(ctx):
+@bot.command(brief='List avaiable gifs', description='This command will list the different outfits available to you')
+async def list_gifs(ctx):
     await ctx.send('**List of gifs (please choose from one of the below)**\n\n' + "\n".join(gifs))
 
 
