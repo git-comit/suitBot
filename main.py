@@ -326,7 +326,7 @@ async def gif(ctx, gif: str, pfp_id: int):
     # try:
     if gif.lower() in gifs:
         if 0 < pfp_id <= 5001:
-            await make_gif(gif, pfp_id)
+            make_gif(gif, pfp_id)
             await ctx.send(file=discord.File(save_img_folder + gif + str(pfp_id) + '.gif'))
             # delete_gif(gif, pfp_id)
         else:
