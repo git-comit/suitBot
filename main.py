@@ -267,7 +267,6 @@ def make_gif(gif, pfp_id):
         monke.paste(frame, mask=frame)
         # print(monke)
         frames.append(monke)
-        print(frame)
     frames[0].save(save_img_folder + gif_string + str(pfp_id) +
                    '.gif', save_all=True, append_images=frames[1:],  loop=0)
 
@@ -322,7 +321,7 @@ async def newfit(ctx, fit: str, pfp_id: int):
     # await ctx.send('Please enter a valid number between 1 and 5000.')
 
 
-@bot.command(name="gif", brief='Dress your pfp see `?fits`', description='This command will let you apply new fits to your pfp')
+@bot.command(name="gif", brief='Dress your pfp see `?list_gifs`', description='This command will let you apply new fits to your pfp')
 async def gif(ctx, gif: str, pfp_id: int):
     # try:
     if gif.lower() in gifs:
