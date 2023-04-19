@@ -273,6 +273,26 @@ def make_gif(gif, pfp_id):
     return
 
 
+def make_gif_nb(gif, pfp_id):
+    gif_string = gif.lower()
+
+    animated_gif = Image.open(gif_folder + gif_string + '.gif')
+    frames = []
+    m = Image.open(no_background_folder + str(pfp_id) + '.png')
+
+    for f in ImageSequence.Iterator(animated_gif):
+
+        frame = f.convert("RGBA")
+        monke = m.copy()
+        monke.paste(frame, mask=frame)
+        # print(monke)
+        frames.append(monke)
+    frames[0].save(save_img_folder + gif_string + str(pfp_id) +
+                   '.gif', save_all=True, append_images=frames[1:],  loop=0)
+
+    return
+
+
 def high_quality_no_background(pfp_id):
 
     pfp = Image.open(no_background_folder + str(pfp_id) + '.png')
@@ -327,6 +347,21 @@ async def gif(ctx, gif: str, pfp_id: int):
     if gif.lower() in gifs:
         if 0 < pfp_id <= 5001:
             make_gif(gif, pfp_id)
+            await ctx.send(file=discord.File(save_img_folder + gif + str(pfp_id) + '.gif'))
+            delete_gif(gif, pfp_id)
+        else:
+            await ctx.send('Please enter a valid number between 1 and 5000.')
+
+    else:
+        await ctx.send('Please enter a valid fit. Check ?gifs for options')
+
+
+@bot.command(name="gif_nb", brief='Dress your pfp see `?list_gifs`', description='This command will let you apply new fits to your pfp')
+async def gifnb(ctx, gif: str, pfp_id: int):
+    # try:
+    if gif.lower() in gifs:
+        if 0 < pfp_id <= 5001:
+            make_gif_nb(gif, pfp_id)
             await ctx.send(file=discord.File(save_img_folder + gif + str(pfp_id) + '.gif'))
             delete_gif(gif, pfp_id)
         else:
