@@ -326,8 +326,8 @@ async def gif(ctx, gif: str, pfp_id: int):
     # try:
     if gif.lower() in gifs:
         if 0 < pfp_id <= 5001:
-            await make_gif(gif, str(pfp_id))
-            await ctx.send(file=discord.File(save_img_folder + gif.lower() + str(pfp_id) + '.gif'))
+            await make_gif(gif, pfp_id)
+            await ctx.send(file=discord.File(save_img_folder + gif + str(pfp_id) + '.gif'))
             # delete_gif(gif, pfp_id)
         else:
             await ctx.send('Please enter a valid number between 1 and 5000.')
