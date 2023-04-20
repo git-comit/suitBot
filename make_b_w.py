@@ -75,9 +75,9 @@ def make_b_w(pfp_id):
 # This combines the images
 
     pfp = Image.open(pfp_folder + str(pfp_id) + '.png')
-    monke = pfp.convert("LA")
+    monke = pfp.convert("L")
     monke.save(save_img_folder + 'bw' + str(pfp_id) + '.png')
     return
 
 
-make_b_w(4470)
+make_b_w(5001)

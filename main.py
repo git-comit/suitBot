@@ -326,6 +326,7 @@ def make_b_w(pfp_id):
     pfp = Image.open(pfp_folder + str(pfp_id) + '.png')
     monke = pfp.convert("LA")
     monke.save(save_img_folder + 'bw' + str(pfp_id) + '.png')
+
     return
 
 
