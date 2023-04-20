@@ -642,8 +642,7 @@ async def holiday(ctx, background: str, pfp_id: int):
 async def banner(ctx, fit: str, pfp_id: int, pfp2=None, pfp3=None, pfp4=None, pfp5=None):
     if fit.lower() in banners:
         if 0 < pfp_id <= 5001:
-            make_banner(fit, str(pfp_id), str(pfp2),
-                        str(pfp3), str(pfp4), str(pfp5))
+            make_banner(fit, str(pfp_id))
             await ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
             deleteDressed(str(pfp_id))
 
