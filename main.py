@@ -646,11 +646,11 @@ async def banner(ctx, fit: str, pfp_id: int, pfp2=None, pfp3=None, pfp4=None, pf
             if pfp5:
                 make_banner(fit, str(pfp_id), str(pfp2),
                             str(pfp3), str(pfp4), str(pfp5))
-            if pfp4:
+            elif pfp4:
                 make_banner(fit, str(pfp_id), str(pfp2), str(pfp3), str(pfp4))
-            if pfp3:
+            elif pfp3:
                 make_banner(fit, str(pfp_id), str(pfp2), str(pfp3))
-            if pfp2:
+            elif pfp2:
                 make_banner(fit, str(pfp_id), str(pfp2))
             else:
                 make_banner(fit, str(pfp_id))
