@@ -374,18 +374,14 @@ async def gif(ctx, gif: str, pfp_id: int):
 
 
 @bot.command(name="bw", brief='make a black and white monke', description='makes black and white monke')
-async def bw(ctx, pfp_id: int):
+async def bw(ctx, pfp_id):
     # try:
-    if gif.lower() in gifs:
-        if 0 < pfp_id <= 5001:
-            make_b_w(pfp_id)
-            await ctx.send(file=discord.File(save_img_folder + 'bw' + str(pfp_id) + '.png'))
-            delete_bw(pfp_id)
-        else:
-            await ctx.send('Please enter a valid number between 1 and 5000.')
-
+    if 0 < pfp_id <= 5001:
+        make_b_w(pfp_id)
+        await ctx.send(file=discord.File(save_img_folder + 'bw' + str(pfp_id) + '.png'))
+        delete_bw(pfp_id)
     else:
-        await ctx.send('Please enter a valid fit. Check ?gifs for options')
+        await ctx.send('Please enter a valid number between 1 and 5000.')
 
 
 @bot.command(name="gif_nb", brief='Dress your pfp see `?list_gifs`', description='This command will let you apply new fits to your pfp')
