@@ -376,7 +376,7 @@ async def gif(ctx, gif: str, pfp_id: int):
 @bot.command(name="bw", brief='make a black and white monke', description='makes black and white monke')
 async def bw(ctx, pfp_id):
     # try:
-    if 0 < pfp_id <= 5001:
+    if 0 < int(pfp_id) <= 5001:
         make_b_w(pfp_id)
         await ctx.send(file=discord.File(save_img_folder + 'bw' + str(pfp_id) + '.png'))
         delete_bw(pfp_id)
