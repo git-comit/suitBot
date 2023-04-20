@@ -317,6 +317,23 @@ def delete_smol(pfp_id):
     os.remove(pfp_folder + str(pfp_id) + '.png')
 
 
+def make_b_w(pfp_id):
+    url = (get_pfp_img_url(str(pfp_id)))
+    download_image(url, pfp_folder + str(pfp_id) + '.png')
+
+# This combines the images
+
+    pfp = Image.open(pfp_folder + str(pfp_id) + '.png')
+    monke = pfp.convert("LA")
+    monke.save(save_img_folder + 'bw' + str(pfp_id) + '.png')
+    return
+
+
+def delete_bw(pfp_id):
+    os.remove(save_img_folder + 'bw' + str(pfp_id) + '.png')
+    os.remove(pfp_folder + str(pfp_id) + '.png')
+
+
 @bot.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot))
@@ -349,6 +366,21 @@ async def gif(ctx, gif: str, pfp_id: int):
             make_gif(gif, pfp_id)
             await ctx.send(file=discord.File(save_img_folder + gif + str(pfp_id) + '.gif'))
             delete_gif(gif, pfp_id)
+        else:
+            await ctx.send('Please enter a valid number between 1 and 5000.')
+
+    else:
+        await ctx.send('Please enter a valid fit. Check ?gifs for options')
+
+
+@bot.command(name="bw", brief='make a black and white monke', description='makes black and white monke')
+async def bw(ctx, pfp_id: int):
+    # try:
+    if gif.lower() in gifs:
+        if 0 < pfp_id <= 5001:
+            make_b_w(pfp_id)
+            await ctx.send(file=discord.File(save_img_folder + 'bw' + str(pfp_id) + '.png'))
+            delete_bw(pfp_id)
         else:
             await ctx.send('Please enter a valid number between 1 and 5000.')
 

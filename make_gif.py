@@ -66,17 +66,15 @@ def make_gif_nb(gif, pfp_id):
     frames = []
 
     for f in ImageSequence.Iterator(animated_gif):
-        m = Image.open(no_background_folder + str(pfp_id) + '.png')
 
         frame = f.convert("RGBA")
-        monke = m.copy()
-        monke.paste(frame, mask=frame)
+        # monke = m.copy()
+        m = Image.open(no_background_folder + str(pfp_id) + '.png')
+
+        m.paste(frame, mask=frame)
         # print(monke)
-        frames.append(monke)
+        frames.append(m)
     frames[0].save(save_img_folder + gif_string + str(pfp_id) +
                    '.gif', save_all=True, append_images=frames[1:],  loop=0)
 
     return
-
-
-make_gif_nb("gm", 4470)
