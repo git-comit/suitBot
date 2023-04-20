@@ -53,7 +53,7 @@ pfp_backgrounds = ["blue", "green", "red"]
 banners = ["black", "blue_bananas", "blue_green_wave", "blue", "green_bananas", "green_wave", "green_white",
            "green", "white_bananas", "white_green", "white", "wordmark_blue", "wordmark_green", "yellow_blue"]
 
-gifs = ["gm", "gn"]
+gifs = ["gm", "gm2", "gn", "gn2"]
 
 # Need to add error handling
 
