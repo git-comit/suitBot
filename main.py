@@ -43,7 +43,8 @@ wc_kits = ["argentina", "australia", "belgium", "brazil", "canada", "costarica",
            "germany", "italy", "mexico", "mexico+", "netherlands", "portugal", "serbia", "southkorea", "spain", "usa"]
 # Search for the pfp id in the JSON dictionary and return the image URL associated with that id. You'll need to update the keys to match what's in your JSON delattr
 
-sombreros = ["black", "blacktie", "cinco", "easter", "october", "pink"]
+sombreros = ["black", "blacktie", "cinco",
+             "easter", "october", "pink", "solana"]
 
 phone_backgrounds = ["all_black", "black_fade", "black_stack",  "blue_stack", "blue",
                      "green_icons", "green_md", "green_stack", "green", "white_blue_md", "white_icons", "yellow"]
