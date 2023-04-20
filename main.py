@@ -278,9 +278,9 @@ def make_gif_nb(gif, pfp_id):
 
     animated_gif = Image.open(gif_folder + gif_string + '.gif')
     frames = []
-    m = Image.open(no_background_folder + str(pfp_id) + '.png')
 
     for f in ImageSequence.Iterator(animated_gif):
+        m = Image.open(no_background_folder + str(pfp_id) + '.png')
 
         frame = f.convert("RGBA")
         monke = m.copy()
