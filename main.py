@@ -28,6 +28,7 @@ wallpaper_folder = 'wallpapers/'
 pfp_background_folder = 'pfp_backgrounds/'
 banner_folder = 'banners/'
 gif_folder = 'gifs/'
+watch_folder = 'watchfaces/'
 
 
 # Returns JSON object as a dictionary
