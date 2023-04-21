@@ -493,7 +493,7 @@ async def watch(ctx, bg, pfp_id):
         else:
             await ctx.send('Please enter a valid number between 1 and 5000.')
     else:
-        await ctx.send('Please enter a valid fit. Check ?watches for options')
+        await ctx.send('Please enter a valid fit. Check `?watch_faces` for options')
 
 
 @bot.command(name="gif_nb", brief='Dress your pfp see `?list_gifs`', description='This command will let you apply new fits to your pfp')
@@ -533,6 +533,11 @@ async def newbrero(ctx, fit: str, pfp_id: int):
 @bot.command(brief='List avaiable fits', description='This command will list the different outfits available to you')
 async def fits(ctx):
     await ctx.send('**List of Fits (please choose from one of the below)**\n\n' + "\n".join(outfits))
+
+
+@bot.command(brief='List avaiable watch faces', description='This command will list the different watch faces available to you')
+async def watch_faces(ctx):
+    await ctx.send('**List of Fits (please choose from one of the below)**\n\n' + "\n".join(watches))
 
 
 @bot.command(brief='List avaiable gifs', description='This command will list the different outfits available to you')
