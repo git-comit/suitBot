@@ -56,6 +56,9 @@ banners = ["black", "blue_bananas", "blue_green_wave", "blue", "green_bananas", 
 
 gifs = ["gm", "gm2", "gn", "gn2"]
 
+watches = ["black_stack", "blue_bananas", "blue_stack", "blue", "green_bananas",
+           "green_monke", "green_stack", "green", "white_bananas", "white"]
+
 # Need to add error handling
 
 
@@ -99,6 +102,16 @@ def make_wallpaper(wallpaper, pfp_id):
     monke = monke.resize((int(monke.width*5), int(monke.height*5)))
     background.paste(monke, (0, 1920), mask=monke)
     background.save(save_img_folder + wallpaper.lower() + str(pfp_id) + '.png')
+
+    return
+
+
+def make_watch(bg, pfp_id):
+    background = Image.open(watch_folder + bg.lower() + '.png')
+    monke = Image.open(no_background_folder + str(pfp_id) + '.png')
+    monke = monke.resize((int(monke.width*2.3), int(monke.height*2.3)))
+    background.paste(monke, (-40, 85), mask=monke)
+    background.save(save_img_folder + bg.lower() + str(pfp_id) + '.png')
 
     return
 
@@ -466,6 +479,20 @@ async def bw(ctx, pfp_id):
         delete_bw(pfp_id)
     else:
         await ctx.send('Please enter a valid number between 1 and 5000.')
+
+
+@bot.command(name="bw", brief='watch face', description='makes watch faces')
+async def watch(ctx, bg, pfp_id):
+    # try:
+    if bg.lower() in watches:
+        if 0 < int(pfp_id) <= 5001:
+            make_watch(bg, pfp_id)
+            await ctx.send(file=discord.File(save_img_folder + bg.lower() + str(pfp_id) + '.png'))
+            deleteDressed(bg, pfp_id)
+        else:
+            await ctx.send('Please enter a valid number between 1 and 5000.')
+    else:
+        await ctx.send('Please enter a valid fit. Check ?watches for options')
 
 
 @bot.command(name="gif_nb", brief='Dress your pfp see `?list_gifs`', description='This command will let you apply new fits to your pfp')
