@@ -481,7 +481,7 @@ async def bw(ctx, pfp_id):
         await ctx.send('Please enter a valid number between 1 and 5000.')
 
 
-@bot.command(name="bw", brief='watch face', description='makes watch faces')
+@bot.command(name="watch", brief='watch face', description='makes watch faces')
 async def watch(ctx, bg, pfp_id):
     # try:
     if bg.lower() in watches:
