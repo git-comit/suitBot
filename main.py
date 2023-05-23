@@ -364,12 +364,8 @@ def make_gif(gif, pfp_id):
         monke.paste(frame, mask=frame)
         # print(monke)
         frames.append(monke)
-    if gif_string = 'welcome':
-        frames[0].save(gif_folder + 'welcome' +
-                   '.gif', save_all=True, append_images=frames[1:],  loop=0, optimize=False, duration=500)
-
-    else: frames[0].save(save_img_folder + gif_string + str(pfp_id) +
-                   '.gif', save_all=True, append_images=frames[1:],  loop=0)
+    frames[0].save(save_img_folder + gif_string + str(pfp_id) +
+                   '.gif', save_all=True, append_images=frames[1:],  loop=0, duration=500)
 
     return
 
