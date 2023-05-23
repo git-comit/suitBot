@@ -55,7 +55,7 @@ pfp_backgrounds = ["blue", "green", "red"]
 banners = ["black", "blue_bananas", "blue_green_wave", "blue", "green_bananas", "green_wave", "green_white",
            "green", "white_bananas", "white_green", "white", "wordmark_blue", "wordmark_green", "yellow_blue"]
 
-gifs = ["gm", "gm2", "gn", "gn2"]
+gifs = ["gm", "gm2", "gn", "gn2", "welcome"]
 
 watches = ["black_stack", "blue_bananas", "blue_stack", "blue", "green_bananas",
            "green_monke", "green_stack", "green", "white_bananas", "white"]
