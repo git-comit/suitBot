@@ -78,3 +78,22 @@ def make_gif_nb(gif, pfp_id):
                    '.gif', save_all=True, append_images=frames[1:],  loop=0)
 
     return
+
+
+def welcome_gif(im1, im2, im3, im4, im5, im6, im7):
+    one = Image.open(welcome_folder + im1 + '.png')
+    two = Image.open(welcome_folder + im2 + '.png')
+    three = Image.open(welcome_folder + im3 + '.png')
+    four = Image.open(welcome_folder + im4 + '.png')
+    five = Image.open(welcome_folder + im5 + '.png')
+    six = Image.open(welcome_folder + im6 + '.png')
+    seven = Image.open(welcome_folder + im7 + '.png')
+
+    frames = [one,  two,  three,  four,
+              five,  six,  seven, seven, seven]
+
+    frames[0].save(gif_folder + 'welcome' +
+                   '.gif', save_all=True, append_images=frames[1:],  loop=0, optimize=False, duration=500)
+
+
+# welcome_gif('1', '2', '3', '4', '5', '6', '7')
