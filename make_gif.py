@@ -15,8 +15,8 @@ gif_folder = 'gifs/'
 pfp_folder = 'clean_pfps/'
 save_img_folder = 'dressed_pfps/'
 no_background_folder = 'no_background/'
-
-gifs = ["gm", "gn"]
+welcome_folder = 'Welcome_gif/'
+gifs = ["gm", "gn", "welcome"]
 
 
 def get_pfp_img_url(id):
