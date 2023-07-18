@@ -72,7 +72,7 @@ def get_pfp_img_url(id):
 def get_gen3_pfp_img_url(id):
     for pfp in gen3_atts:
         if id == pfp['id']:
-            return pfp['Image']
+            return pfp['image']
 # Downloads the pfp from the image URL and saves it in a directory
 
 
@@ -507,7 +507,7 @@ async def gif(ctx, gif: str, pfp_id: int):
 
 
 @bot.command(name="gen3", brief='dress your gen3 monke `list_gen3` for avaliable args', description='This command will let you apply new fits to your pfp')
-async def gif3(ctx, gif: str, pfp_id: int):
+async def gen3(ctx, gif: str, pfp_id: int):
     # try:
     if gif.lower() in gifs:
         if 0 < pfp_id <= 15000:
