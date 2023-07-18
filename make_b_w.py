@@ -78,4 +78,4 @@ def make_gif_gen3(gif, pfp_id):
     return
 
 
-make_gif_gen3('gm', 2255)
+make_gif_gen3('gm', 2)
