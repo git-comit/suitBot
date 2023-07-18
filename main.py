@@ -506,7 +506,7 @@ async def gif(ctx, gif: str, pfp_id: int):
         await ctx.send('Please enter a valid fit. Check ?gifs for options')
 
 
-@bot.command(name="gen3", brief='dress your gen3 monke `list_gen3` for avaliable args', description='This command will let you apply new fits to your pfp')
+@bot.command(name="gen3", brief='dress your gen3 monke `list_gifs` for avaliable args', description='This command will let you apply new fits to your pfp')
 async def gen3(ctx, gif: str, pfp_id: int):
     # try:
     if gif.lower() in gifs:
