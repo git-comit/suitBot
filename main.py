@@ -15,7 +15,7 @@ bot = commands.Bot(command_prefix="?", intents=intents)
 
 # Opening JSON file with pfps. Add your open file and update it to match the name here
 data = open('attributes.json')
-
+gen3 = open('gen3Attributes.json')
 # Folder locations for clean pfps, completed pfps, and outfits
 
 save_img_folder = 'dressed_pfps/'
@@ -33,7 +33,7 @@ watch_folder = 'watchfaces/'
 
 # Returns JSON object as a dictionary
 pfp_atts = json.load(data)
-
+gen3_atts = json.load(gen3)
 
 # list of the various outfits you want to offer. these should match the filename on the outfit pngs
 
@@ -69,7 +69,12 @@ def get_pfp_img_url(id):
             return pfp['Image']
 
 
+def get_gen3_pfp_img_url(id):
+    for pfp in gen3_atts:
+        if id == pfp['id']:
+            return pfp['Image']
 # Downloads the pfp from the image URL and saves it in a directory
+
 
 def download_image(url, image_file_path):
     r = requests.get(url, timeout=4.0)
