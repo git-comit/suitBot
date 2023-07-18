@@ -399,6 +399,32 @@ def make_gif_nb(gif, pfp_id):
     return
 
 
+def make_gif_gen3(gif, pfp_id):
+    gif_string = gif.lower()
+    url = (get_gen3_pfp_img_url(str(pfp_id)))
+    download_image(url, pfp_folder + str(pfp_id) + '.png')
+
+    animated_gif = Image.open(gif_folder + gif_string + '.gif')
+    frames = []
+    m = Image.open(pfp_folder + str(pfp_id) + '.png')
+
+    for f in ImageSequence.Iterator(animated_gif):
+
+        frame = f.convert("RGBA")
+        monke = m.copy()
+        monke.paste(frame, mask=frame)
+        # print(monke)
+        frames.append(monke)
+
+    if gif_string == 'welcome':
+        frames[0].save(save_img_folder + gif_string + str(pfp_id) +
+                       '.gif', save_all=True, append_images=frames[1:],  loop=0, duration=500)
+    else:
+        frames[0].save(save_img_folder + gif_string + str(pfp_id) +
+                       '.gif', save_all=True, append_images=frames[1:],  loop=0)
+    return
+
+
 def high_quality_no_background(pfp_id):
 
     pfp = Image.open(no_background_folder + str(pfp_id) + '.png')
@@ -475,6 +501,21 @@ async def gif(ctx, gif: str, pfp_id: int):
             delete_gif(gif, pfp_id)
         else:
             await ctx.send('Please enter a valid number between 1 and 5000.')
+
+    else:
+        await ctx.send('Please enter a valid fit. Check ?gifs for options')
+
+
+@bot.command(name="gen3", brief='dress your gen3 monke `list_gen3` for avaliable args', description='This command will let you apply new fits to your pfp')
+async def gif(ctx, gif: str, pfp_id: int):
+    # try:
+    if gif.lower() in gifs:
+        if 0 < pfp_id <= 15000:
+            make_gif_gen3(gif, pfp_id)
+            await ctx.send(file=discord.File(save_img_folder + gif + str(pfp_id) + '.gif'))
+            delete_gif(gif, pfp_id)
+        else:
+            await ctx.send('Please enter a valid number between 1 and 15000.')
 
     else:
         await ctx.send('Please enter a valid fit. Check ?gifs for options')
