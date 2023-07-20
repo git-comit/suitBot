@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+#Suit Bot Docs
+=======
 # MonkeDAO Suit Bot Docs
 
 The monkeDAO SuitBot can be found in the MonkeDAO discord in the [#monke-outfits-and-wallpapers](https://discord.com/channels/874638621368533012/888515872405213194) channel.
@@ -74,3 +77,4 @@ The different fits, backgrounds and other fun stuff
 ![votebrero](/outfits/votebrero.png)
 `vr`
 ![vr](/outfits/vr.png)
+>>>>>>> master
