@@ -71,8 +71,8 @@ def get_pfp_img_url(id):
 
 def get_gen3_pfp_img_url(id):
     for pfp in gen3_atts:
-        if id.str() == pfp['id']:
-            return pfp['Image']
+        if id == pfp['id']:
+            return pfp['image']
 # Downloads the pfp from the image URL and saves it in a directory
 
 
