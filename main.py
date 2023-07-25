@@ -686,16 +686,6 @@ async def smoller(ctx, pfp_id):
         await ctx.send('Please enter a valid number between 1 and 5000')
 
 
-@bot.command(name="smol", breif='A smol monke')
-async def smol(ctx, pfp_id):
-    if 0 < pfp_id <= 5000:
-        make_smol(pfp_id)
-        await ctx.send(file=discord.File(save_img_folder + 'smol' + str(pfp_id) + '.png'))
-        delete_smol(pfp_id)
-    else:
-        await ctx.send('Please enter a valid number between 1 and 5000')
-
-
 @bot.command(name='holiday', breif='Holiday monkes', description='backgrounds for monkes \n takes 1 command `holiday blue 4470` ')
 async def holiday(ctx, background: str, pfp_id: int):
     if background.lower() in pfp_backgrounds:
