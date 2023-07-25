@@ -206,12 +206,16 @@ def high_quality(pfp_id):
 
     return
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 569890c (addign smol monke)
 def make_smol(pfp_id):
     url = (get_pfp_img_url(pfp_id))
     download_image(url, pfp_folder + str(pfp_id) + '.png')
     pfp = Image.open(pfp_folder + str(pfp_id) + '.png')
     pfp_bg_color = pfp.convert('RGB')
+<<<<<<< HEAD
     r, g, b = pfp_bg_color.getpixel((300, 300))
     smol_im = pfp.resize((int(pfp.width/3), int(pfp.height/3)))
 
@@ -425,6 +429,19 @@ def make_gif_gen3(gif, pfp_id):
     return
 
 
+=======
+    r,g,b = pfp_bg_color.getpixel((300,300))
+    smol_im = pfp.resize((int(pfp.width/3), int(pfp.height/3)))
+
+    smol = Image.new('RGB', (384, 384), (r, g, b))
+
+    smol.paste(smol_im, (0,0), mask=smol_im)
+
+    smol.save(save_img_folder + 'smol' +str(pfp_id) + '.png')
+
+    return
+
+>>>>>>> 569890c (addign smol monke)
 def high_quality_no_background(pfp_id):
 
     pfp = Image.open(no_background_folder + str(pfp_id) + '.png')
@@ -443,11 +460,15 @@ def delete_hq(pfp_id):
     os.remove(save_img_folder + 'hq' + str(pfp_id) + '.png')
     os.remove(pfp_folder + str(pfp_id) + '.png')
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 569890c (addign smol monke)
 def delete_smol(pfp_id):
     os.remove(save_img_folder + 'smol' + str(pfp_id) + '.png')
     os.remove(pfp_folder + str(pfp_id) + '.png')
 
+<<<<<<< HEAD
 
 def make_b_w(pfp_id):
     url = (get_pfp_img_url(str(pfp_id)))
@@ -467,6 +488,8 @@ def delete_bw(pfp_id):
     os.remove(pfp_folder + str(pfp_id) + '.png')
 
 
+=======
+>>>>>>> 569890c (addign smol monke)
 @bot.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot))
@@ -754,6 +777,16 @@ async def smoller(ctx, pfp_id):
         make_smoller(pfp_id)
         await ctx.send(file=discord.File(save_img_folder + 'smol' + str(pfp_id) + '.png'))
         # delete_smol(pfp_id)
+    else:
+        await ctx.send('Please enter a valid number between 1 and 5000')
+
+
+@bot.command(name="smol", breif='A smol monke')
+async def smol(ctx, pfp_id):
+    if 0 < pfp_id <= 5000:
+        make_smol(pfp_id)
+        await ctx.send(file=discord.File(save_img_folder + 'smol' + str(pfp_id) + '.png'))
+        delete_smol(pfp_id)
     else:
         await ctx.send('Please enter a valid number between 1 and 5000')
 
