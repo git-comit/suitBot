@@ -337,6 +337,22 @@ def make_gif_nb(gif, pfp_id):
     return
 
 
+def make_smoller(pfp_id):
+    url = (get_pfp_img_url(pfp_id))
+    download_image(url, pfp_folder + str(pfp_id) + '.png')
+    pfp = Image.open(pfp_folder + str(pfp_id) + '.png')
+    pfp_bg_color = pfp.convert('RGB')
+    r, g, b = pfp_bg_color.getpixel((300, 300))
+    smol_im = pfp.resize((int(pfp.width/6), int(pfp.height/6)))
+
+    smol = Image.new('RGB', (384, 384), (r, g, b))
+    smol.paste(smol_im, (160, 320), mask=smol_im)
+
+    smol.save(save_img_folder + 'smol' + str(pfp_id) + '.png')
+
+    return
+
+
 def make_gif_gen3(gif, pfp_id):
     gif_string = gif.lower()
     url = (get_gen3_pfp_img_url(str(pfp_id)))
