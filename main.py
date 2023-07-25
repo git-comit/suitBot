@@ -259,6 +259,11 @@ def make_smol(pfp_id):
     smol_im = pfp.resize((int(pfp.width/3), int(pfp.height/3)))
 
     smol = Image.new('RGB', (384, 384), (r, g, b))
+<<<<<<< HEAD
+=======
+    print(smol)
+    smol.paste(smol_im, (192,192), mask=smol_im)
+>>>>>>> 2e34ba7 (wip)
 
     smol.paste(smol_im, (0, 0), mask=smol_im)
 
