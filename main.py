@@ -142,6 +142,49 @@ def get_kit(fit, pfp_id):
     return
 
 
+def make_banner(ban, pfp_id, pfp2=None, pfp3=None, pfp4=None, pfp5=None):
+    banner_string = ban.lower()
+    url = (get_pfp_img_url(pfp_id))
+    download_image(url, pfp_folder + str(pfp_id) + '.png')
+    background = Image.open(banner_folder + banner_string + '.png')
+
+    if banner_string == "yellow_blue" or banner_string == "blue_green_wave":
+
+        monke = Image.open(pfp_folder + str(pfp_id) + '.png')
+        monke = monke.resize(
+            (int(monke.width*2.60416666667), int(monke.height*2.60416666667)))
+        if pfp2:
+            m2 = Image.open(no_background_folder + str(pfp2) + '.png')
+            m2 = m2.resize((int(m2.width*1.5), int(m2.height*1.5)))
+            background.paste(m2, (1500, 424), mask=m2)
+            background.save(save_img_folder + banner_string +
+
+                            str(pfp_id) + '.png')
+
+        if pfp3:
+            m3 = Image.open(no_background_folder + str(pfp3) + '.png')
+            m3 = m3.resize((int(m3.width*1.5), int(m3.height*1.5)))
+            background.paste(m3, (1100, 424), mask=m3)
+            background.save(save_img_folder + banner_string +
+                            str(pfp_id) + '.png')
+        if pfp4:
+            m4 = Image.open(no_background_folder + str(pfp4) + '.png')
+            m4 = m4.resize((int(m4.width*1.5), int(m4.height*1.5)))
+            background.paste(m4, (700, 424), mask=m4)
+            background.save(save_img_folder + banner_string +
+                            str(pfp_id) + '.png')
+
+        if pfp5:
+            m5 = Image.open(no_background_folder + str(pfp5) + '.png')
+            m5 = m5.resize((int(m5.width*1.5), int(m5.height*1.5)))
+            background.paste(m5, (300, 424), mask=m5)
+            background.save(save_img_folder + banner_string +
+                            str(pfp_id) + '.png')
+
+        background.paste(monke, (2040, 0), mask=monke)
+        background.save(save_img_folder + banner_string + str(pfp_id) + '.png')
+
+
 def get_brero(fit, pfp_id):
     url = (get_pfp_img_url(pfp_id))
     download_image(url, pfp_folder + str(pfp_id) + '.png')
@@ -246,6 +289,78 @@ def delete_hq(pfp_id):
 def delete_smol(pfp_id):
     os.remove(save_img_folder + 'smol' + str(pfp_id) + '.png')
     os.remove(pfp_folder + str(pfp_id) + '.png')
+
+
+def make_gif(gif, pfp_id):
+    gif_string = gif.lower()
+    url = (get_pfp_img_url(str(pfp_id)))
+    download_image(url, pfp_folder + str(pfp_id) + '.png')
+
+    animated_gif = Image.open(gif_folder + gif_string + '.gif')
+    frames = []
+    m = Image.open(pfp_folder + str(pfp_id) + '.png')
+
+    for f in ImageSequence.Iterator(animated_gif):
+
+        frame = f.convert("RGBA")
+        monke = m.copy()
+        monke.paste(frame, mask=frame)
+        # print(monke)
+        frames.append(monke)
+
+    if gif_string == 'welcome':
+        frames[0].save(save_img_folder + gif_string + str(pfp_id) +
+                       '.gif', save_all=True, append_images=frames[1:],  loop=0, duration=500)
+    else:
+        frames[0].save(save_img_folder + gif_string + str(pfp_id) +
+                       '.gif', save_all=True, append_images=frames[1:],  loop=0)
+    return
+
+
+def make_gif_nb(gif, pfp_id):
+    gif_string = gif.lower()
+
+    animated_gif = Image.open(gif_folder + gif_string + '.gif')
+    frames = []
+
+    for f in ImageSequence.Iterator(animated_gif):
+        m = Image.open(no_background_folder + str(pfp_id) + '.png')
+
+        frame = f.convert("RGBA")
+        monke = m.copy()
+        monke.paste(frame, mask=frame)
+        # print(monke)
+        frames.append(monke)
+    frames[0].save(save_img_folder + gif_string + str(pfp_id) +
+                   '.gif', save_all=True, append_images=frames[1:],  loop=0)
+
+    return
+
+
+def make_gif_gen3(gif, pfp_id):
+    gif_string = gif.lower()
+    url = (get_gen3_pfp_img_url(str(pfp_id)))
+    download_image(url, pfp_folder + str(pfp_id) + '.png')
+
+    animated_gif = Image.open(gif_folder + gif_string + '.gif')
+    frames = []
+    m = Image.open(pfp_folder + str(pfp_id) + '.png')
+
+    for f in ImageSequence.Iterator(animated_gif):
+
+        frame = f.convert("RGBA")
+        monke = m.copy()
+        monke.paste(frame, mask=frame)
+        # print(monke)
+        frames.append(monke)
+
+    if gif_string == 'welcome':
+        frames[0].save(save_img_folder + gif_string + str(pfp_id) +
+                       '.gif', save_all=True, append_images=frames[1:],  loop=0, duration=500)
+    else:
+        frames[0].save(save_img_folder + gif_string + str(pfp_id) +
+                       '.gif', save_all=True, append_images=frames[1:],  loop=0)
+    return
 
 
 def make_b_w(pfp_id):
