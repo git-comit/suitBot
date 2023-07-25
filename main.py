@@ -608,17 +608,15 @@ async def wc_nb(ctx, fit: str, pfp_id: int):
 @bot.command(name="newfitnb", brief='new fits no background', description='This command will let you apply fits, and return them without a background. type `?fits` to see available fits')
 async def fit_nb(ctx, fit: str, pfp_id: int):
     # try:
-        if fit.lower() in outfits:
-            if 0 < pfp_id <= 5000:
-                no_background_fit(fit, str(pfp_id))
-                await ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
-                deleteDressed(fit, str(pfp_id))
-
-        else:
-            await ctx.send('Please enter a valid number between 1 and 5000.')
+    if fit.lower() in outfits:
+        if 0 < pfp_id <= 5000:
+            no_background_fit(fit, str(pfp_id))
+            await ctx.send(file=discord.File(save_img_folder + fit.lower() + str(pfp_id) + '.png'))
+            deleteDressed(fit, str(pfp_id))
 
     else:
-        await ctx.send('Please enter a valid kit. Check ?kits for options')
+        await ctx.send('Please enter a valid number between 1 and 5000.')
+
     # except:
     #     await ctx.send('Please enter a valid number between 1 and 5000.')
 
