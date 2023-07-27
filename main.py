@@ -640,7 +640,7 @@ async def wallpaper(ctx, wallpaper: str, pfp_id: int):
 
 @bot.command(name="no_monke_wallpaper", brief='Phone Wallpaper',
              description='This command will let make a phone wallpapere, type `?wallpapers` to see available backgrounds')
-async def wallpaper(ctx, wallpaper: str):
+async def no_monke_wallpaper(ctx, wallpaper: str):
     # try:
     if wallpaper.lower() in wallpaper_folder:
         await ctx.send(file=discord.File(wallpaper_folder + wallpaper.lower() + '.png'))
@@ -656,7 +656,8 @@ async def no_monke_banner(ctx, banner: str):
     # try:
 
     if banner.lower() in banner_folder:
-        await ctx.send(file=discord.File(banner_folder + banner.lower() + '.png'))
+        banner_image = Image.open(banner_folder + banner.lower() + '.png')
+        await ctx.send(file=discord.File(banner_image))
 
     else:
         await ctx.send('Please enter a valid banner. Check ?list_banners for options')
