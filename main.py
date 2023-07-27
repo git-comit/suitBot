@@ -652,7 +652,7 @@ async def wallpaper(ctx, wallpaper: str):
 
 @bot.command(name="no_monke_banner", brief='banner with no monkes ',
              description='This command will let make a phone wallpapere, type `?wallpapers` to see available backgrounds')
-async def no_background_banner(ctx, banner: str):
+async def no_monke_banner(ctx, banner: str):
     # try:
 
     if banner.lower() in banner_folder:
