@@ -655,9 +655,8 @@ async def no_monke_wallpaper(ctx, wallpaper: str):
 async def no_monke_banner(ctx, banner: str):
     # try:
 
-    if banner.lower() in banner_folder:
-        banner_image = Image.open(banner_folder + banner.lower() + '.png')
-        await ctx.send(file=discord.File(banner_image))
+    if banner.lower() in banners:
+        await ctx.send(file=discord.File(banner_folder + banner.lower() + '.png'))
 
     else:
         await ctx.send('Please enter a valid banner. Check ?list_banners for options')
