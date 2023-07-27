@@ -650,17 +650,16 @@ async def wallpaper(ctx, wallpaper: str):
     # await ctx.send('Please enter a valid number between 1 and 5000.')
 
 
-@bot.command(name="no_monke_banner", brief='Phone Wallpaper',
+@bot.command(name="no_monke_banner", brief='banner with no monkes ',
              description='This command will let make a phone wallpapere, type `?wallpapers` to see available backgrounds')
 async def no_background_banner(ctx, banner: str):
     # try:
 
     if banner.lower() in banner_folder:
-        banner_string = banner.lower()
-        await ctx.send(file=discord.File(banner_folder + banner_string + '.png'))
+        await ctx.send(file=discord.File(banner_folder + banner.lower() + '.png'))
 
     else:
-        await ctx.send('Please enter a valid wallpaper. Check ?wallpapers for options')
+        await ctx.send('Please enter a valid banner. Check ?list_banners for options')
     # except:
 
 
