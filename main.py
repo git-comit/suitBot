@@ -638,6 +638,31 @@ async def wallpaper(ctx, wallpaper: str, pfp_id: int):
     # await ctx.send('Please enter a valid number between 1 and 5000.')
 
 
+@bot.command(name="no_monke_wallpaper", brief='Phone Wallpaper',
+             description='This command will let make a phone wallpapere, type `?wallpapers` to see available backgrounds')
+async def wallpaper(ctx, banner: str):
+    # try:
+    if wallpaper.lower() in phone_backgrounds:
+        banner_string = banner.lower()
+        await ctx.send(file=discord.File(banner_folder + banner_string + '.png'))
+
+    else:
+        await ctx.send('Please enter a valid wallpaper. Check ?wallpapers for options')
+    # except:
+    # await ctx.send('Please enter a valid number between 1 and 5000.')
+
+
+@bot.command(name="no_monke_banner", brief='Phone Wallpaper',
+             description='This command will let make a phone wallpapere, type `?wallpapers` to see available backgrounds')
+async def wallpaper(ctx, wallpaper: str):
+    # try:
+    if wallpaper.lower() in phone_backgrounds:
+        await ctx.send(file=discord.File(wallpaper_folder + wallpaper.lower() + '.png'))
+
+    else:
+        await ctx.send('Please enter a valid wallpaper. Check ?wallpapers for options')
+
+
 @bot.command(name="hq", brief='High Resolution Monke', description='This command will return an upscaled version of your monke 1920 x 1920')
 async def hq(ctx, pfp_id: int):
     # try:
