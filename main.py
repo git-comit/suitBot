@@ -184,6 +184,77 @@ def make_banner(ban, pfp_id, pfp2=None, pfp3=None, pfp4=None, pfp5=None):
         background.paste(monke, (2040, 0), mask=monke)
         background.save(save_img_folder + banner_string + str(pfp_id) + '.png')
 
+    elif banner_string == "black" or banner_string == "blue" or banner_string == "green":
+        monke = Image.open(no_background_folder + pfp_id + '.png')
+        monke = monke.resize((int(monke.width*1.5), int(monke.height*1.5)))
+
+        if pfp2:
+            m2 = Image.open(no_background_folder + str(pfp2) + '.png')
+            m2 = m2.resize((int(m2.width*1.5), int(m2.height*1.5)))
+            background.paste(m2, (1100, 424), mask=m2)
+            background.save(save_img_folder + banner_string +
+                            str(pfp_id) + '.png')
+        if pfp3:
+            m3 = Image.open(no_background_folder + str(pfp3) + '.png')
+            m3 = m3.resize((int(m3.width*1.5), int(m3.height*1.5)))
+            background.paste(m3, (700, 424), mask=m3)
+            background.save(save_img_folder + banner_string +
+                            str(pfp_id) + '.png')
+
+        if pfp4:
+            m4 = Image.open(no_background_folder + str(pfp4) + '.png')
+            m4 = m4.resize((int(m4.width*1.5), int(m4.height*1.5)))
+            background.paste(m4, (300, 424), mask=m4)
+            background.save(save_img_folder + banner_string +
+                            str(pfp_id) + '.png')
+        if pfp5:
+            m5 = Image.open(no_background_folder + str(pfp5) + '.png')
+            m5 = m5.resize((int(m5.width*1.5), int(m5.height*1.5)))
+            background.paste(m5, (-100, 424), mask=m5)
+            background.save(save_img_folder + banner_string +
+                            str(pfp_id) + '.png')
+
+        background.paste(monke, (1500, 424), mask=monke)
+        background.save(save_img_folder + banner_string + str(pfp_id) + '.png')
+
+    else:
+
+        monke = Image.open(no_background_folder + pfp_id + '.png')
+        monke = monke.resize((int(monke.width*1.5), int(monke.height*1.5)))
+
+        if pfp2:
+            m2 = Image.open(no_background_folder + str(pfp2) + '.png')
+            m2 = m2.resize((int(m2.width*1.5), int(m2.height*1.5)))
+            background.paste(m2, (1600, 424), mask=m2)
+            background.save(save_img_folder + banner_string +
+
+                            str(pfp_id) + '.png')
+
+        if pfp3:
+            m3 = Image.open(no_background_folder + str(pfp3) + '.png')
+            m3 = m3.resize((int(m3.width*1.5), int(m3.height*1.5)))
+            background.paste(m3, (1200, 424), mask=m3)
+            background.save(save_img_folder + banner_string +
+                            str(pfp_id) + '.png')
+        if pfp4:
+            m4 = Image.open(no_background_folder + str(pfp4) + '.png')
+            m4 = m4.resize((int(m4.width*1.5), int(m4.height*1.5)))
+            background.paste(m4, (800, 424), mask=m4)
+            background.save(save_img_folder + banner_string +
+                            str(pfp_id) + '.png')
+
+        if pfp5:
+            m5 = Image.open(no_background_folder + str(pfp5) + '.png')
+            m5 = m5.resize((int(m5.width*1.5), int(m5.height*1.5)))
+            background.paste(m5, (400, 424), mask=m5)
+            background.save(save_img_folder + banner_string +
+                            str(pfp_id) + '.png')
+
+        background.paste(monke, (2000, 424), mask=monke)
+        background.save(save_img_folder + banner_string + str(pfp_id) + '.png')
+
+    return
+
 
 def get_brero(fit, pfp_id):
     url = (get_pfp_img_url(pfp_id))
